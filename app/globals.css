@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-porcelain: #FAF8F3;
+    --text-soft-ink: #1C1A17;
+    --accent-brass: #9C7A45;
+    --divider-grey: #DEDAD2;
+    --bridal-oxblood: #5E1A1F;
+  }
+
+  body {
+    background-color: var(--bg-porcelain);
+    color: var(--text-soft-ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-heading), Georgia, serif;
+    font-weight: 300;
+  }
+
+  a, button, [role="button"], select {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F3;
+}
+::-webkit-scrollbar-thumb {
+  background: #DEDAD2;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9C7A45;
+}
+
+/* Antique Brass Accent Utilities */
+.text-brass {
+  color: #9C7A45;
+}
+
+.bg-brass {
+  background-color: #9C7A45;
+}
+
+.border-brass {
+  border-color: #9C7A45;
+}
+
+.border-warm-grey {
+  border-color: #DEDAD2;
+}
+
+.bg-porcelain {
+  background-color: #FAF8F3;
+}
+
+.text-soft-ink {
+  color: #1C1A17;
+}
+
+/* Focus outline for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #9C7A45;
+  outline-offset: 2px;
+}
+
+/* Infinite Marquee Loop Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* Glassmorphism Mobile WebKit Compatibility */
+.backdrop-glass-nav {
+  background-color: rgba(245, 240, 230, 0.85) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  will-change: backdrop-filter, -webkit-backdrop-filter;
+}
+
+.backdrop-glass-drawer {
+  background-color: rgba(250, 248, 243, 0.95) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
