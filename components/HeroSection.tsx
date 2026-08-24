@@ -46,25 +46,25 @@ export default function HeroSection() {
               {/* Eyebrow Label */}
               <div className="inline-flex items-center gap-2">
                 <span className="text-[11px] uppercase tracking-[0.25em] text-[#9C7A45] font-semibold">
-                  TIMELESS ELEGANCE
+                  First Time in Kolkata
                 </span>
               </div>
 
               {/* Headline */}
               <h1 className="font-serif text-5xl sm:text-5xl lg:text-6xl text-[#1C1A17] font-light leading-[1.1] sm:leading-[1.12] tracking-tight">
-                Crafted to <br />
-                <span className="italic font-normal text-[#9C7A45]">Shine</span> Forever
+                Welcome to <br />
+                <span className="italic font-normal text-[#9C7A45]">Kanzar</span> Jewels
               </h1>
 
               {/* Subheadline */}
               <p className="text-sm sm:text-base text-[#1C1A17]/95 sm:text-[#1C1A17]/85 font-medium sm:font-light leading-relaxed max-w-md">
-                Discover exquisite 22K gold and heritage bridal jewellery designed to celebrate life's most precious moments.
+                Specialising in fully hallmarked gold jewellery — crafted with trust, priced with transparency.
               </p>
 
               {/* CTA Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-3 sm:gap-6 w-full sm:w-auto">
                 <a
-                  href="tel:+918025589000"
+                  href="tel:+919875338183"
                   className="w-full sm:w-auto px-7 py-3.5 bg-[#1C1A17] text-[#FAF8F3] hover:bg-[#9C7A45] active:bg-[#9C7A45] text-xs font-medium uppercase tracking-[0.15em] transition-colors duration-300 flex items-center justify-center sm:justify-start gap-3 group shadow-md cursor-pointer rounded-none text-center"
                 >
                   <span>Call Us Now</span>

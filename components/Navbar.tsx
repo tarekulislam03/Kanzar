@@ -79,7 +79,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-          
+
           {/* Left Hamburger Button (Desktop & Mobile) */}
           <div className="flex items-center">
             <button
@@ -97,10 +97,10 @@ export default function Navbar() {
           {/* Centre Wordmark / Logo (Desktop & Mobile) */}
           <Link href="/" className="flex flex-col items-center py-1 cursor-pointer group">
             <span className="font-serif text-lg sm:text-2xl font-normal tracking-[0.18em] text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors cursor-pointer">
-              MUSADDIK
+              KANZAR
             </span>
             <span className="text-[7px] sm:text-[9px] tracking-[0.25em] text-[#9C7A45] uppercase font-medium -mt-0.5 cursor-pointer">
-              EST. 1978
+              JEWELS
             </span>
           </Link>
 
@@ -137,27 +137,27 @@ export default function Navbar() {
           }`}
         >
           <div className="max-w-[1200px] mx-auto h-full px-6 sm:px-10 lg:px-12 py-4 sm:py-5 flex flex-col justify-between">
-            
+
             {/* Drawer Header Bar */}
             <div className="flex items-center justify-between border-b border-[#DEDAD2]/60 pb-2.5">
               <div className="flex items-center gap-2">
                 <HallmarkSeal size={20} />
                 <span className="text-xs sm:text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
-                  Musaddik Atelier Navigation
+                  Navigation
                 </span>
               </div>
               <div className="hidden sm:flex items-center gap-4 text-[11px] text-[#1C1A17]/70 font-light">
-                <span>Bangalore Flagship</span>
-                <a href="tel:+918025589000" className="hover:text-[#9C7A45] underline flex items-center gap-1 cursor-pointer">
+                <span>Kanzar</span>
+                <a href="tel:+919875338183" className="hover:text-[#9C7A45] underline flex items-center gap-1 cursor-pointer">
                   <Phone className="w-3 h-3 text-[#9C7A45]" />
-                  <span>+91 80 2558 9000</span>
+                  <span>+91 98753 38183</span>
                 </a>
               </div>
             </div>
 
             {/* Navigation Columns Grid with Sub Navs (Single Column per line on Mobile for enhanced UX) */}
             <nav className="grid grid-cols-1 md:grid-cols-5 gap-5 sm:gap-6 py-3">
-              
+
               {/* Column 1: Collections */}
               <div className="flex flex-col group border-b border-[#DEDAD2]/40 pb-3 md:border-b-0 md:pb-0">
                 <button
@@ -401,7 +401,7 @@ export default function Navbar() {
             {/* Drawer Footer Actions */}
             <div className="pt-2.5 border-t border-[#DEDAD2]/60 flex items-center justify-between">
               <span className="text-[10px] uppercase tracking-[0.2em] text-[#1C1A17]/50 font-light hidden sm:inline">
-                Certified 22K Gold · BIS Hallmark 916 · Bespoke Commissions
+                Certified 22K Gold · Wholesale
               </span>
               <button
                 onClick={() => {
@@ -411,7 +411,7 @@ export default function Navbar() {
                 className="w-full sm:w-auto px-6 py-2.5 sm:py-2 bg-[#1C1A17] text-[#FAF8F3] hover:bg-[#9C7A45] text-xs sm:text-[11px] font-medium uppercase tracking-[0.18em] flex items-center justify-center gap-2 transition-colors shadow-xs cursor-pointer"
               >
                 <Calendar className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-[#9C7A45]" />
-                <span>Book Private Viewing</span>
+                <span>Book Appointment</span>
               </button>
             </div>
 

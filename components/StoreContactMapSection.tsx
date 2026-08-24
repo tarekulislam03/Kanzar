@@ -22,7 +22,7 @@ export default function StoreContactMapSection() {
   const whatsappMessage = encodeURIComponent(
     `Hello Musaddik Jewellery, I would like to enquire about visiting your Commercial Street store. Name: ${formData.name || 'Visitor'}, Date: ${formData.date || 'Soon'}.`
   )
-  const whatsappUrl = `https://wa.me/918025589000?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
 
   return (
     <section id="visit" className="py-24 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
@@ -34,42 +34,33 @@ export default function StoreContactMapSection() {
           </div>
 
           <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
-            FLAGSHIP ATELIER & STORE VISITS
+            OUR LOCATION
           </span>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#1C1A17]">
-            Visit Us & Store Enquiries
+            Visit Our Store
           </h2>
 
           <p className="text-xs sm:text-sm text-[#1C1A17]/70 font-light leading-relaxed">
-            Experience our 22K gold and heritage bridal collections in person at our Commercial Street store in Bangalore. Private bridal viewing suites and valet parking available.
+            Step into Kanzar Jewels and experience our collection in person — hallmarked gold, expert guidance, and honest pricing, all under one roof.
           </p>
         </div>
 
         {/* Height-matched grid layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-          
+
           {/* Left Column: Interactive Map & Store Details (7 cols) */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-8 h-full">
             {/* Interactive Google Map Embed */}
             <div className="w-full flex-1 min-h-[320px] bg-[#EAE6DD] border border-[#DEDAD2] relative overflow-hidden shadow-sm">
-              <iframe
-                title="Musaddik Jewellery Commercial Street Store Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.971271816568!2d77.6083818!3d12.9736852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1681a95e638b%3A0xb35a09b30c4a45a3!2sCommercial%20St%2C%20Tasker%20Town%2C%20Shivaji%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full filter contrast-[0.95] saturate-[0.9]"
-              />
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.695895780467!2d88.36908891151309!3d22.553061779420165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027742d79ed949%3A0xfd331fd2a8edf15a!2sKanzar%20jewels!5e0!3m2!1sen!2sin!4v1787590993995!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             {/* Store Information Cards */}
             <div className="bg-[#FAF8F3] border border-[#DEDAD2] p-8 space-y-6 flex-shrink-0">
               <h3 className="font-serif text-xl text-[#1C1A17] font-normal border-b border-[#DEDAD2] pb-3">
-                Flagship Store Location
+                Store Location
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-[#1C1A17]/80 font-light leading-relaxed">
@@ -80,9 +71,9 @@ export default function StoreContactMapSection() {
                     <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
                       LOCATION
                     </span>
-                    <p className="text-sm font-medium text-[#1C1A17]">104 Heritage Square</p>
-                    <p>Commercial Street (Near Safina Plaza)</p>
-                    <p>Bangalore, Karnataka 560001</p>
+                    <p className="text-sm font-medium text-[#1C1A17]">P-4B, CIT Road</p>
+                    <p>Paddapukur, Entally (Near Birshul Hat)</p>
+                    <p>Kolkata, West Bengal – 700014</p>
                   </div>
                 </div>
 
@@ -93,9 +84,9 @@ export default function StoreContactMapSection() {
                     <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
                       STORE HOURS
                     </span>
-                    <p className="text-sm font-medium text-[#1C1A17]">Tuesday – Sunday</p>
-                    <p>11:00 AM – 8:00 PM</p>
-                    <p className="text-[11px] text-[#1C1A17]/60">Closed on Mondays</p>
+                    <p className="text-sm font-medium text-[#1C1A17]">Monday – Saturday</p>
+                    <p>9:00 AM – 9:00 PM</p>
+                    <p className="text-[11px] text-[#1C1A17]/60">Closed on Sundays</p>
                   </div>
                 </div>
 
@@ -106,8 +97,8 @@ export default function StoreContactMapSection() {
                     <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
                       PHONE
                     </span>
-                    <p className="font-medium text-[#1C1A17]">+91 80 2558 9000</p>
-                    <p>+91 98860 12345</p>
+                    <p className="font-medium text-[#1C1A17]">+033-4535-6632</p>
+                    <p>+91 98753 38183</p>
                   </div>
                 </div>
 
@@ -118,8 +109,8 @@ export default function StoreContactMapSection() {
                     <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
                       EMAIL
                     </span>
-                    <p className="font-medium text-[#1C1A17]">concierge@musaddikjewellery.com</p>
-                    <p className="text-[11px] text-[#1C1A17]/60">Mon-Sun 24/7 Concierge</p>
+                    <p className="font-medium text-[#1C1A17]">kanzarjewels@gmail.com</p>
+                    <p className="text-[11px] text-[#1C1A17]/60">Mon-Sat 24/7</p>
                   </div>
                 </div>
               </div>

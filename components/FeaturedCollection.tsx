@@ -19,11 +19,11 @@ export default function FeaturedCollection({ items }: FeaturedCollectionProps) {
             <div className="flex items-center gap-3 mb-2">
               <HallmarkSeal size={28} />
               <span className="text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-medium">
-                THE CATALOGUE
+                Our Collection
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-light text-[#1C1A17]">
-              Curated Gold & Kundan Creations
+              Hallmarked Gold, Every Occasion
             </h2>
           </div>
           <Link

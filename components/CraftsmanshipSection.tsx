@@ -6,24 +6,24 @@ import Image from 'next/image'
 export default function CraftsmanshipSection() {
   const trustFacts = [
     {
-      label: 'BIS HALLMARK CERTIFIED',
-      title: '100% 22K Purity Guarantee',
-      desc: 'Every piece is laser-stamped with government BIS 916 hallmarks, purity fineness, and jeweler identification code.',
+      label: 'Purity',
+      title: '100% Hallmarked',
+      desc: 'Every piece is certified under the official BIS hallmark, guaranteeing genuine gold purity in every purchase.',
     },
     {
-      label: 'HERITAGE KUNDAN WORK',
-      title: 'Foil-Backed Uncut Gems',
-      desc: 'Authentic 24K pure gold foil burnishing securing hand-cut polki diamonds according to royal court traditions.',
+      label: 'Craftsmanship',
+      title: 'Trusted Quality',
+      desc: 'Crafted with meticulous attention to detail, using only certified materials and time-honoured techniques.',
     },
     {
-      label: 'BESPOKE COMMISSIONS',
-      title: 'In-Store Customization',
-      desc: 'Consult directly with master goldsmiths to redesign heirloom pieces or create custom bridal neckpieces.',
+      label: 'Pricing',
+      title: 'Best Wholesale Prices',
+      desc: 'Transparent, flat making charges and honest pricing — no hidden markups, ever.',
     },
     {
-      label: 'ETHICAL GEMSTONES',
-      title: 'Natural Gem Verification',
-      desc: 'Conflict-free emeralds, rubies, and freshwater pearls independently verified by certified gemological labs.',
+      label: 'Design',
+      title: 'Handcrafted Excellence',
+      desc: 'Each design reflects skilled craftsmanship, blending traditional techniques with refined, wearable finishes.',
     },
   ]
 
@@ -53,7 +53,7 @@ export default function CraftsmanshipSection() {
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-light text-white">
-              Craftsmanship & Trust Standards
+              Authenticity You Can Trust
             </h2>
           </div>
         </div>

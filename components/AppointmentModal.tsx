@@ -31,9 +31,9 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
   }
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Musaddik Jewellery, I would like to book a store appointment for ${formData.name || 'a visit'}. Phone: ${formData.phone}, Preferred Date: ${formData.date}.`
+    `Hello, I would like to book a store appointment for ${formData.name || 'a visit'}. Phone: ${formData.phone}, Preferred Date: ${formData.date}.`
   )
-  const whatsappUrl = `https://wa.me/918025589000?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/918101402916?text=${whatsappMessage}`
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm transition-all overflow-y-auto">
@@ -53,7 +53,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
             </div>
             <h3 className="font-serif text-2xl text-[#1C1A17] font-normal">Appointment Requested</h3>
             <p className="text-xs text-[#1C1A17]/70 font-light leading-relaxed max-w-xs mx-auto">
-              Thank you, <span className="font-medium text-[#1C1A17]">{formData.name}</span>. Our store concierge will contact you on <span className="font-medium">{formData.phone}</span> to confirm your viewing time.
+              Thank you, <span className="font-medium text-[#1C1A17]">{formData.name}</span>. We will contact you on <span className="font-medium">{formData.phone}</span> to confirm your viewing time.
             </p>
             <div className="pt-4 flex flex-col gap-3">
               <a
@@ -77,7 +77,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
           <div>
             <div className="flex items-center gap-2 text-[#9C7A45] text-xs font-medium uppercase tracking-[0.2em] mb-1">
               <HallmarkSeal size={20} />
-              <span>PRIVATE ATELIER VISIT</span>
+              <span>PRIVATE  VISIT</span>
             </div>
             <h2 className="font-serif text-2xl font-normal text-[#1C1A17] mb-2">
               Book an Appointment

@@ -14,11 +14,11 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <HallmarkSeal size={32} />
               <span className="font-serif text-xl font-normal tracking-[0.18em] text-[#1C1A17]">
-                MUSADDIK
+                KANZAR
               </span>
             </Link>
             <p className="text-xs text-[#1C1A17]/70 leading-relaxed font-light">
-              Traditional 22K gold, Kundan, and certified Polki jewellery. Handcrafted in Bangalore since 1978.
+              Specialising in 100% hallmarked gold jewellery — trusted quality, honest pricing.
             </p>
           </div>
 
@@ -92,13 +92,13 @@ export default function Footer() {
           {/* Store Location */}
           <div className="space-y-3">
             <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
-              FLAGSHIP STORE
+              ADDRESS
             </span>
             <div className="text-xs text-[#1C1A17]/70 leading-relaxed font-light space-y-1">
-              <div>104 Heritage Square, Commercial Street</div>
-              <div>Bangalore, Karnataka 560001</div>
-              <div>Tue – Sun: 11:00 AM – 8:00 PM</div>
-              <div className="pt-2 text-[#1C1A17] font-medium">+91 80 2558 9000</div>
+              <div>P-4B, CIT Road, Paddapukur, Entally, Near Birshul Hat</div>
+              <div>Kolkata, West Bengal – 700014</div>
+              <div>Mon – Sat: 9:00 AM – 9:00 PM</div>
+              <div className="pt-2 text-[#1C1A17] font-medium">033-4535-6632 / 9875338183</div>
             </div>
           </div>
         </div>
@@ -107,12 +107,12 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#1C1A17]/60 gap-4">
           <div className="flex items-center gap-2">
             <HallmarkSeal size={20} />
-            <span>© {new Date().getFullYear()} Musaddik Jewellery. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} Kanzar Jewels. All rights reserved.</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
-            <span>BIS HALLMARK 916 CERTIFIED</span>
-            <span>·</span>
-            <span>NO ONLINE SALES · IN-STORE ENQUIRIES ONLY</span>
+            <span>100% HALLMARKED</span>
+            <span>TRUSTED QUALITY</span>
+            <span>BEST WHOLESALE PRICES</span>
           </div>
         </div>
       </div>
