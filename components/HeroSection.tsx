@@ -51,32 +51,32 @@ export default function HeroSection() {
               </div>
 
               {/* Headline */}
-              <h1 className="font-serif text-5xl sm:text-5xl lg:text-6xl text-[#1C1A17] font-light leading-[1.1] sm:leading-[1.12] tracking-tight">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#1C1A17] font-light leading-[1.1] sm:leading-[1.12] tracking-tight">
                 Welcome to <br />
                 <span className="italic font-normal text-[#9C7A45]">Kanzar</span> Jewels
               </h1>
 
               {/* Subheadline */}
-              <p className="text-sm sm:text-base text-[#1C1A17]/95 sm:text-[#1C1A17]/85 font-medium sm:font-light leading-relaxed max-w-md">
+              <p className="text-xs sm:text-base text-[#1C1A17]/95 sm:text-[#1C1A17]/85 font-medium sm:font-light leading-relaxed max-w-xs sm:max-w-sm lg:max-w-md">
                 Specialising in fully hallmarked gold jewellery — crafted with trust, priced with transparency.
               </p>
 
               {/* CTA Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-3 sm:gap-6 w-full sm:w-auto">
+              <div className="pt-2 flex flex-row items-center justify-start gap-2 sm:gap-6 w-full sm:w-auto">
                 <a
                   href="tel:+919875338183"
-                  className="w-full sm:w-auto px-7 py-3.5 bg-[#1C1A17] text-[#FAF8F3] hover:bg-[#9C7A45] active:bg-[#9C7A45] text-xs font-medium uppercase tracking-[0.15em] transition-colors duration-300 flex items-center justify-center sm:justify-start gap-3 group shadow-md cursor-pointer rounded-none text-center"
+                  className="px-3.5 sm:px-7 py-2.5 sm:py-3.5 bg-[#1C1A17] text-[#FAF8F3] hover:bg-[#9C7A45] active:bg-[#9C7A45] text-[10px] sm:text-xs font-medium uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-colors duration-300 flex items-center justify-center gap-1.5 sm:gap-3 group shadow-md cursor-pointer rounded-none text-center whitespace-nowrap shrink-0"
                 >
                   <span>Call Us Now</span>
-                  <ArrowRight className="w-4 h-4 text-[#FAF8F3] group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FAF8F3] group-hover:translate-x-1 transition-transform shrink-0" />
                 </a>
 
                 <Link
                   href="/catalog"
-                  className="w-full sm:w-auto px-5 py-3.5 text-xs font-medium uppercase tracking-[0.15em] text-[#1C1A17] hover:text-[#9C7A45] active:opacity-75 transition-colors flex items-center justify-center sm:justify-start gap-2.5 group cursor-pointer"
+                  className="px-2.5 sm:px-5 py-2.5 sm:py-3.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.1em] sm:tracking-[0.15em] text-[#1C1A17] hover:text-[#9C7A45] active:opacity-75 transition-colors flex items-center justify-center gap-1.5 sm:gap-2.5 group cursor-pointer whitespace-nowrap shrink-0"
                 >
-                  <span className="w-8 h-8 rounded-full border border-[#1C1A17]/30 flex items-center justify-center bg-[#F5F0E6]/80 backdrop-blur-sm group-hover:border-[#9C7A45] group-hover:bg-[#9C7A45]/10 transition-colors shrink-0">
-                    <Play className="w-3 h-3 text-[#1C1A17] group-hover:text-[#9C7A45] fill-current translate-x-0.5" />
+                  <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-[#1C1A17]/30 flex items-center justify-center bg-[#F5F0E6]/80 backdrop-blur-sm group-hover:border-[#9C7A45] group-hover:bg-[#9C7A45]/10 transition-colors shrink-0">
+                    <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#1C1A17] group-hover:text-[#9C7A45] fill-current translate-x-0.5" />
                   </span>
                   <span>Explore Catalog</span>
                 </Link>

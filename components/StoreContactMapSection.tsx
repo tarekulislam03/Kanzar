@@ -58,7 +58,7 @@ export default function StoreContactMapSection() {
             </div>
 
             {/* Store Information Cards */}
-            <div className="bg-[#FAF8F3] border border-[#DEDAD2] p-8 space-y-6 flex-shrink-0">
+            <div className="bg-[#FAF8F3] border border-[#DEDAD2] p-5 space-y-6 flex-shrink-0">
               <h3 className="font-serif text-xl text-[#1C1A17] font-normal border-b border-[#DEDAD2] pb-3">
                 Store Location
               </h3>
@@ -116,12 +116,12 @@ export default function StoreContactMapSection() {
               </div>
 
               {/* Instant WhatsApp Enquiry Action */}
-              <div className="pt-4 border-t border-[#DEDAD2]">
+              <div className="pt-3 border-t border-[#DEDAD2]">
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 border border-[#1C1A17] bg-transparent text-[#1C1A17] text-xs font-medium uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2.5 hover:border-[#9C7A45] hover:text-[#9C7A45]"
+                  className="w-full py-3.5 pl-3 border border-[#1C1A17] bg-transparent text-[#1C1A17] text-[10px] font-medium uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2.5 hover:border-[#9C7A45] hover:text-[#9C7A45]"
                 >
                   <MessageCircle className="w-4 h-4 text-[#9C7A45]" />
                   <span>Instant WhatsApp Enquiry</span>
@@ -131,7 +131,7 @@ export default function StoreContactMapSection() {
           </div>
 
           {/* Right Column: Contact & Visit Form (5 cols) matching height */}
-          <div className="lg:col-span-5 bg-[#FAF8F3] border border-[#DEDAD2] p-8 shadow-sm flex flex-col justify-between h-full">
+          <div className="lg:col-span-5 bg-[#FAF8F3] border border-[#DEDAD2] p-5 shadow-sm flex flex-col justify-between h-full">
             {submitted ? (
               <div className="py-12 my-auto text-center space-y-4">
                 <div className="w-12 h-12 rounded-full bg-[#EAE4D6] border border-[#9C7A45] flex items-center justify-center mx-auto text-[#9C7A45]">
