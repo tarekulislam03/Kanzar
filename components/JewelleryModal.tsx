@@ -34,9 +34,9 @@ export default function JewelleryModal({ item, onClose }: JewelleryModalProps) {
   const activeImageUrl = urlFor(imageList[activeImageIndex])
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Musaddik Jewellery, I am inquiring about the "${item.name}" (${item.material}) from your catalog.`
+    `Hello, I am inquiring about the "${item.name}" (${item.material}) from your catalog.`
   )
-  const whatsappUrl = `https://wa.me/918025589000?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
 
   return (
     <>
@@ -71,9 +71,8 @@ export default function JewelleryModal({ item, onClose }: JewelleryModalProps) {
                       <button
                         key={idx}
                         onClick={() => setActiveImageIndex(idx)}
-                        className={`relative w-10 h-10 sm:w-12 sm:h-12 border transition-all shrink-0 cursor-pointer ${
-                          activeImageIndex === idx ? 'border-[#9C7A45] ring-1 ring-[#9C7A45]' : 'border-[#DEDAD2] opacity-60'
-                        }`}
+                        className={`relative w-10 h-10 sm:w-12 sm:h-12 border transition-all shrink-0 cursor-pointer ${activeImageIndex === idx ? 'border-[#9C7A45] ring-1 ring-[#9C7A45]' : 'border-[#DEDAD2] opacity-60'
+                          }`}
                       >
                         <Image src={src} alt={`${item.name} thumb ${idx}`} fill className="object-cover" />
                       </button>

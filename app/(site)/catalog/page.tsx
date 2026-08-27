@@ -5,7 +5,7 @@ import HallmarkSeal from '../../../components/HallmarkSeal'
 import { getJewelleryItems } from '../../../lib/sanity'
 
 export const metadata: Metadata = {
-  title: 'Jewellery Catalog | Musaddik Heritage Collections',
+  title: 'Jewellery Catalog | Kanzar Collections',
   description:
     'Browse our complete catalog of handcrafted 22K gold neckpieces, uncut Kundan chokers, certified Polki bridal sets, bangles, and rings.',
 }
@@ -25,15 +25,15 @@ export default async function CatalogPage() {
           </div>
 
           <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
-            22K BIS HALLMARKED CATALOGUE
+            100% Hallmarked
           </span>
 
           <h1 className="font-serif text-4xl sm:text-5xl font-light text-[#1C1A17]">
-            The Heritage Collections
+            Our Collections
           </h1>
 
           <p className="text-sm text-[#1C1A17]/70 font-light leading-relaxed">
-            Select pieces in 22K pure gold, uncut Kundan, natural Polki, and hand-carved temple work. Enquire on WhatsApp or visit our Bangalore store for custom orders.
+            Every piece is certified under the official BIS hallmark, guaranteeing genuine gold purity in every purchase.
           </p>
         </div>
 
