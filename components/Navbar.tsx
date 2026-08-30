@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Menu, X, Calendar, Phone } from 'lucide-react'
+import { Menu, X, Calendar, Phone, ChevronRight, Sparkles } from 'lucide-react'
 import AppointmentModal from './AppointmentModal'
 import HallmarkSeal from './HallmarkSeal'
 
@@ -14,10 +14,12 @@ export default function Navbar() {
   const pathname = usePathname()
   const router = useRouter()
 
+  const isHomePage = pathname === '/'
+
   useEffect(() => {
     const handleScroll = () => {
       const top = window.scrollY || document.documentElement.scrollTop || 0
-      setScrolled(top > 10)
+      setScrolled(top > 20)
     }
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -40,7 +42,7 @@ export default function Navbar() {
     }
   }, [menuOpen])
 
-  // Close navigation menu when route changes
+  // Close overlay when route changes
   useEffect(() => {
     setMenuOpen(false)
   }, [pathname])
@@ -69,354 +71,278 @@ export default function Navbar() {
     router.push('/blog')
   }
 
+  // Determine text and icon colors based on scroll position and page
+  const isTransparent = isHomePage && !scrolled && !menuOpen
+  const textColor = isTransparent ? 'text-white' : 'text-[#1C1A17]'
+  const textHoverColor = isTransparent ? 'hover:text-white/80' : 'hover:text-[#9C7A45]'
+  const brandSubColor = isTransparent ? 'text-[#D4AF37]' : 'text-[#9C7A45]'
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || menuOpen
-            ? 'backdrop-glass-nav border-b border-[#DEDAD2]/80 py-3.5 shadow-sm'
-            : 'bg-transparent border-b border-transparent py-4 sm:py-5'
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          isTransparent
+            ? 'bg-transparent py-6 sm:py-7 lg:py-8 border-b border-white/10'
+            : 'backdrop-glass-nav border-b border-[#DEDAD2]/80 py-5 sm:py-6 shadow-sm'
         }`}
       >
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
 
-          {/* Left Hamburger Button (Desktop & Mobile) */}
-          <div className="flex items-center">
+          {/* Left: Menu Only (Icon on mobile, Icon + Text on desktop) */}
+          <div className="flex items-center z-10">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="flex items-center gap-2.5 p-2 -ml-2 text-[#1C1A17] hover:text-[#9C7A45] transition-colors focus:outline-none cursor-pointer group"
+              className={`flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-light transition-colors focus:outline-none cursor-pointer group ${textColor} ${textHoverColor}`}
               aria-label={menuOpen ? 'Close Menu' : 'Open Menu'}
             >
-              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              <span className="text-[11px] uppercase tracking-[0.2em] font-light text-[#1C1A17]/80 group-hover:text-[#9C7A45] transition-colors cursor-pointer">
-                Menu
-              </span>
+              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <span className="hidden sm:inline">Menu</span>
             </button>
           </div>
 
-          {/* Centre Wordmark / Logo (Desktop & Mobile) */}
-          <Link href="/" className="flex flex-col items-center py-1 cursor-pointer group">
-            <span className="font-serif text-lg sm:text-2xl font-normal tracking-[0.18em] text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors cursor-pointer">
-              KANZAR
-            </span>
-            <span className="text-[7px] sm:text-[9px] tracking-[0.25em] text-[#9C7A45] uppercase font-medium -mt-0.5 cursor-pointer">
-              JEWELS
-            </span>
-          </Link>
+          {/* Absolute Centre: Luxury Brand Wordmark */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto z-10">
+            <Link href="/" className="flex flex-col items-center py-1 cursor-pointer group text-center whitespace-nowrap">
+              <span className={`font-serif text-lg sm:text-2xl md:text-3xl font-light tracking-[0.22em] transition-colors cursor-pointer ${textColor} ${textHoverColor}`}>
+                KANZAR
+              </span>
+              <span className={`text-[8px] sm:text-[10px] tracking-[0.3em] uppercase font-medium -mt-1 cursor-pointer ${brandSubColor}`}>
+                JEWELS
+              </span>
+            </Link>
+          </div>
 
-          {/* Right Book Appointment CTA Button (Desktop & Mobile) */}
-          <div className="flex items-center">
-            <button
-              onClick={() => setIsAppointmentOpen(true)}
-              className="px-3.5 sm:px-5 py-1.5 sm:py-2 border border-[#1C1A17]/80 text-[#1C1A17] text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:bg-[#1C1A17] hover:text-[#FAF8F3] transition-colors font-medium rounded-none shadow-xs cursor-pointer"
+          {/* Right: Call Icon on Mobile, Call Now on Desktop (No Border) */}
+          <div className="flex items-center z-10">
+            <a
+              href="tel:+919875338183"
+              aria-label="Call Now"
+              title="Call Us: +91 98753 38183"
+              className={`flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-light transition-colors focus:outline-none cursor-pointer group ${textColor} ${textHoverColor}`}
             >
-              Book <span className="hidden sm:inline">Appointment</span>
-            </button>
+              <Phone className="w-4 h-4 sm:w-3.5 sm:h-3.5" />
+              <span className="hidden sm:inline">Call Now</span>
+            </a>
           </div>
 
         </div>
       </header>
 
-      {/* Navigation Drawer Container (Full Width, 30% Viewport Height with Sub Navs) */}
+      {/* LEFT SIDE NAVIGATION DRAWER: Full Screen on Mobile, Half Screen on Desktop */}
       <div
-        className={`fixed inset-0 z-40 pt-[61px] sm:pt-[72px] transition-opacity duration-400 ease-in-out ${
+        className={`fixed inset-0 z-[60] transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        {/* Darkened backdrop overlay */}
+        {/* Backdrop Overlay with Backdrop Blur */}
         <div
-          className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-400 cursor-pointer"
+          className={`absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-500 ${
+            menuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
           onClick={() => setMenuOpen(false)}
-          aria-hidden="true"
         />
 
-        {/* Full Width, ~30% Viewport Height Top Menu Banner Panel with Sub-Navs */}
-        <div
-          className={`relative w-full min-h-[320px] sm:h-[35vh] max-h-[85vh] backdrop-glass-drawer border-b border-[#DEDAD2] shadow-2xl transition-all duration-400 ease-in-out z-50 transform overflow-y-auto ${
-            menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+        {/* Left Side Drawer Panel (W-FULL ON MOBILE, 50% WIDTH ON DESKTOP) */}
+        <aside
+          className={`fixed top-0 left-0 bottom-0 w-full md:w-1/2 lg:w-[48vw] xl:w-[42vw] h-full bg-[#FAF8F3] border-r border-[#DEDAD2] shadow-2xl z-50 flex flex-col justify-between p-6 sm:p-10 lg:p-12 transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)] overflow-y-auto transform ${
+            menuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
-          <div className="max-w-[1200px] mx-auto h-full px-6 sm:px-10 lg:px-12 py-4 sm:py-5 flex flex-col justify-between">
-
-            {/* Drawer Header Bar */}
-            <div className="flex items-center justify-between border-b border-[#DEDAD2]/60 pb-2.5">
-              <div className="flex items-center gap-2">
-                <HallmarkSeal size={20} />
-                <span className="text-xs sm:text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
-                  Navigation
-                </span>
-              </div>
-              <div className="hidden sm:flex items-center gap-4 text-[11px] text-[#1C1A17]/70 font-light">
-                <span>Kanzar</span>
-                <a href="tel:+919875338183" className="hover:text-[#9C7A45] underline flex items-center gap-1 cursor-pointer">
-                  <Phone className="w-3 h-3 text-[#9C7A45]" />
-                  <span>+91 98753 38183</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Navigation Columns Grid with Sub Navs (Single Column per line on Mobile for enhanced UX) */}
-            <nav className="grid grid-cols-1 md:grid-cols-5 gap-5 sm:gap-6 py-3">
-
-              {/* Column 1: Collections */}
-              <div className="flex flex-col group border-b border-[#DEDAD2]/40 pb-3 md:border-b-0 md:pb-0">
-                <button
-                  onClick={() => handleNavClick('collections')}
-                  className="flex items-center gap-1.5 text-left py-0.5 cursor-pointer"
-                >
-                  <span className="text-sm sm:text-sm uppercase tracking-[0.15em] text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors font-semibold sm:font-medium cursor-pointer">
-                    Collections
+          {/* Header Bar inside Drawer */}
+          <div>
+            <div className="flex items-center justify-between border-b border-[#DEDAD2] pb-6 mb-8">
+              <div className="flex items-center gap-3 group cursor-pointer">
+                <div className="p-1 rounded-full bg-[#9C7A45]/10 group-hover:rotate-45 transition-transform duration-500">
+                  <HallmarkSeal size={24} />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-serif text-xl sm:text-2xl tracking-[0.2em] text-[#1C1A17] font-medium leading-none">
+                    KANZAR
                   </span>
-                </button>
-                <ul className="mt-2 space-y-2 sm:space-y-1.5 pl-3 border-l-2 sm:border-l border-[#9C7A45]/40 sm:border-[#DEDAD2]/70">
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('collections')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Bridal Gold Sets
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('collections')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Antique Polki
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('collections')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Royal Kundan
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('collections')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Temple Craft
-                    </button>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 2: Heritage */}
-              <div className="flex flex-col group border-b border-[#DEDAD2]/40 pb-3 md:border-b-0 md:pb-0">
-                <button
-                  onClick={() => handleNavClick('heritage')}
-                  className="flex items-center gap-1.5 text-left py-0.5 cursor-pointer"
-                >
-                  <span className="text-sm sm:text-sm uppercase tracking-[0.15em] text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors font-semibold sm:font-medium cursor-pointer">
-                    Heritage
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-[#9C7A45] font-semibold mt-1">
+                    ATELIER NAVIGATION
                   </span>
-                </button>
-                <ul className="mt-2 space-y-2 sm:space-y-1.5 pl-3 border-l-2 sm:border-l border-[#9C7A45]/40 sm:border-[#DEDAD2]/70">
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('heritage')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      5 Generations Craft
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('heritage')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      BIS Hallmark 916
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('heritage')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Master Goldsmiths
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('heritage')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Bespoke Atelier
-                    </button>
-                  </li>
-                </ul>
+                </div>
               </div>
 
-              {/* Column 3: Full Catalog */}
-              <div className="flex flex-col group border-b border-[#DEDAD2]/40 pb-3 md:border-b-0 md:pb-0">
-                <button
-                  onClick={() => navigateCatalog()}
-                  className="flex items-center gap-1.5 text-left py-0.5 cursor-pointer"
-                >
-                  <span className="text-sm sm:text-sm uppercase tracking-[0.15em] text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors font-semibold sm:font-medium cursor-pointer">
-                    Catalog
-                  </span>
-                </button>
-                <ul className="mt-2 space-y-2 sm:space-y-1.5 pl-3 border-l-2 sm:border-l border-[#9C7A45]/40 sm:border-[#DEDAD2]/70">
-                  <li>
-                    <button
-                      onClick={() => navigateCatalog('Necklaces')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Necklaces & Chokers
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => navigateCatalog('Bangles')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Gold Bangles & Kada
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => navigateCatalog('Earrings')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Jhumkas & Earrings
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => navigateCatalog('Rings')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Rings & Solitaires
-                    </button>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 4: Atelier Journal */}
-              <div className="flex flex-col group border-b border-[#DEDAD2]/40 pb-3 md:border-b-0 md:pb-0">
-                <button
-                  onClick={() => handleNavClick('journal')}
-                  className="flex items-center gap-1.5 text-left py-0.5 cursor-pointer"
-                >
-                  <span className="text-sm sm:text-sm uppercase tracking-[0.15em] text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors font-semibold sm:font-medium cursor-pointer">
-                    Journal
-                  </span>
-                </button>
-                <ul className="mt-2 space-y-2 sm:space-y-1.5 pl-3 border-l-2 sm:border-l border-[#9C7A45]/40 sm:border-[#DEDAD2]/70">
-                  <li>
-                    <button
-                      onClick={() => navigateBlog()}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Gold Purity Guide
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => navigateBlog()}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Bridal Styling Tips
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => navigateBlog()}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Jewellery Care
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => navigateBlog()}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Heirloom Restoration
-                    </button>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 5: Visit Atelier */}
-              <div className="flex flex-col group">
-                <button
-                  onClick={() => handleNavClick('visit')}
-                  className="flex items-center gap-1.5 text-left py-0.5 cursor-pointer"
-                >
-                  <span className="text-sm sm:text-sm uppercase tracking-[0.15em] text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors font-semibold sm:font-medium cursor-pointer">
-                    Visit Atelier
-                  </span>
-                </button>
-                <ul className="mt-2 space-y-2 sm:space-y-1.5 pl-3 border-l-2 sm:border-l border-[#9C7A45]/40 sm:border-[#DEDAD2]/70">
-                  <li>
-                    <button
-                      onClick={() => {
-                        setMenuOpen(false)
-                        setIsAppointmentOpen(true)
-                      }}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Private Viewing Lounge
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => handleNavClick('visit')}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Flagship Store Address
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => {
-                        setMenuOpen(false)
-                        setIsAppointmentOpen(true)
-                      }}
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      Virtual Consultation
-                    </button>
-                  </li>
-                  <li>
-                    <a
-                      href="https://wa.me/918025589000"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[13px] sm:text-xs text-[#1C1A17]/80 hover:text-[#9C7A45] transition-colors font-normal sm:font-light block text-left cursor-pointer"
-                    >
-                      WhatsApp Concierge
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-            </nav>
-
-            {/* Drawer Footer Actions */}
-            <div className="pt-2.5 border-t border-[#DEDAD2]/60 flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.2em] text-[#1C1A17]/50 font-light hidden sm:inline">
-                Certified 22K Gold · Wholesale
-              </span>
               <button
-                onClick={() => {
-                  setMenuOpen(false)
-                  setIsAppointmentOpen(true)
-                }}
-                className="w-full sm:w-auto px-6 py-2.5 sm:py-2 bg-[#1C1A17] text-[#FAF8F3] hover:bg-[#9C7A45] text-xs sm:text-[11px] font-medium uppercase tracking-[0.18em] flex items-center justify-center gap-2 transition-colors shadow-xs cursor-pointer"
+                onClick={() => setMenuOpen(false)}
+                className="w-10 h-10 rounded-full border border-[#1C1A17]/20 flex items-center justify-center text-[#1C1A17] hover:bg-[#1C1A17] hover:text-white hover:rotate-90 transition-all duration-300 cursor-pointer"
+                aria-label="Close Navigation"
               >
-                <Calendar className="w-4 h-4 sm:w-3.5 sm:h-3.5 text-[#9C7A45]" />
-                <span>Book Appointment</span>
+                <X className="w-5 h-5" />
               </button>
             </div>
 
+            {/* Staggered Animated Navigation Links */}
+            <nav className="space-y-6 sm:space-y-7">
+
+              {/* Item 1: High Jewellery Collections */}
+              <div
+                className={`group border-b border-[#DEDAD2]/60 pb-5 transition-all duration-500 delay-150 transform ${
+                  menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'
+                }`}
+              >
+                <button
+                  onClick={() => handleNavClick('collections')}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#9C7A45] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="font-serif text-xl sm:text-2xl text-[#1C1A17] group-hover:text-[#9C7A45] group-hover:translate-x-1 transition-all duration-300 font-medium">
+                      High Jewellery Collections
+                    </span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-[#9C7A45] group-hover:translate-x-2 transition-transform duration-300" />
+                </button>
+                <div className="mt-3 space-y-2.5 pl-6 border-l-2 border-[#9C7A45]/30">
+                  <button onClick={() => handleNavClick('collections')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    Royal Kundan & Antique Polki
+                  </button>
+                  <button onClick={() => handleNavClick('collections')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    Bridal Gold Trousseau Sets
+                  </button>
+                  <button onClick={() => handleNavClick('collections')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    Temple Heritage Masterpieces
+                  </button>
+                </div>
+              </div>
+
+              {/* Item 2: Catalog Categories */}
+              <div
+                className={`group border-b border-[#DEDAD2]/60 pb-5 transition-all duration-500 delay-200 transform ${
+                  menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'
+                }`}
+              >
+                <button
+                  onClick={() => navigateCatalog()}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#9C7A45] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="font-serif text-xl sm:text-2xl text-[#1C1A17] group-hover:text-[#9C7A45] group-hover:translate-x-1 transition-all duration-300 font-medium">
+                      Explore Catalog
+                    </span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-[#9C7A45] group-hover:translate-x-2 transition-transform duration-300" />
+                </button>
+                <div className="mt-3 space-y-2.5 pl-6 border-l-2 border-[#9C7A45]/30">
+                  <button onClick={() => navigateCatalog('Necklaces')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    Chokers & Statement Necklaces
+                  </button>
+                  <button onClick={() => navigateCatalog('Bangles')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    Crafted Gold Bangles & Kadas
+                  </button>
+                  <button onClick={() => navigateCatalog('Earrings')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    Heritage Jhumkas & Chandbalis
+                  </button>
+                </div>
+              </div>
+
+              {/* Item 3: Our Heritage */}
+              <div
+                className={`group border-b border-[#DEDAD2]/60 pb-5 transition-all duration-500 delay-250 transform ${
+                  menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'
+                }`}
+              >
+                <button
+                  onClick={() => handleNavClick('heritage')}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#9C7A45] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="font-serif text-xl sm:text-2xl text-[#1C1A17] group-hover:text-[#9C7A45] group-hover:translate-x-1 transition-all duration-300 font-medium">
+                      5 Generations Craftsmanship
+                    </span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-[#9C7A45] group-hover:translate-x-2 transition-transform duration-300" />
+                </button>
+                <div className="mt-3 space-y-2.5 pl-6 border-l-2 border-[#9C7A45]/30">
+                  <button onClick={() => handleNavClick('heritage')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    Legacy & Atelier Artisans
+                  </button>
+                  <button onClick={() => handleNavClick('heritage')} className="block text-xs sm:text-sm text-[#1C1A17]/75 hover:text-[#9C7A45] hover:translate-x-1 transition-all duration-200 font-light">
+                    BIS Hallmark 916 Guarantee
+                  </button>
+                </div>
+              </div>
+
+              {/* Item 4: Journal */}
+              <div
+                className={`group border-b border-[#DEDAD2]/60 pb-5 transition-all duration-500 delay-300 transform ${
+                  menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'
+                }`}
+              >
+                <button
+                  onClick={() => navigateBlog()}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#9C7A45] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="font-serif text-xl sm:text-2xl text-[#1C1A17] group-hover:text-[#9C7A45] group-hover:translate-x-1 transition-all duration-300 font-medium">
+                      Atelier Journal
+                    </span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-[#9C7A45] group-hover:translate-x-2 transition-transform duration-300" />
+                </button>
+              </div>
+
+              {/* Item 5: Flagship Atelier */}
+              <div
+                className={`group transition-all duration-500 delay-350 transform ${
+                  menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'
+                }`}
+              >
+                <button
+                  onClick={() => handleNavClick('visit')}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#9C7A45] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="font-serif text-xl sm:text-2xl text-[#1C1A17] group-hover:text-[#9C7A45] group-hover:translate-x-1 transition-all duration-300 font-medium">
+                      Visit Flagship Store
+                    </span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-[#9C7A45] group-hover:translate-x-2 transition-transform duration-300" />
+                </button>
+              </div>
+
+            </nav>
           </div>
-        </div>
+
+          {/* Drawer Footer Actions */}
+          <div
+            className={`pt-8 border-t border-[#DEDAD2] mt-8 space-y-4 transition-all duration-500 delay-400 transform ${
+              menuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            <button
+              onClick={() => {
+                setMenuOpen(false)
+                setIsAppointmentOpen(true)
+              }}
+              className="group relative w-full py-4 bg-[#1C1A17] text-[#FAF8F3] hover:bg-[#9C7A45] text-xs font-semibold uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <Calendar className="w-4 h-4 text-[#D4AF37] group-hover:text-white transition-colors" />
+              <span>Book Atelier Appointment</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#D4AF37] opacity-80 group-hover:opacity-100 group-hover:rotate-12 transition-all" />
+            </button>
+
+            <a
+              href="tel:+919875338183"
+              className="w-full py-3 border border-[#1C1A17]/30 text-[#1C1A17] hover:border-[#9C7A45] hover:text-[#9C7A45] text-xs uppercase tracking-[0.18em] font-light flex items-center justify-center gap-2 transition-colors cursor-pointer"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call Concierge: +91 98753 38183</span>
+            </a>
+
+            <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-[#1C1A17]/60 pt-2 font-light border-t border-[#DEDAD2]/40">
+              <span>Certified 22K Gold</span>
+              <span>BIS Hallmark 916</span>
+            </div>
+          </div>
+        </aside>
       </div>
 
       {/* Appointment Modal */}

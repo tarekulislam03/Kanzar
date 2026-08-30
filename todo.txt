@@ -1,0 +1,7 @@
+1. update the whatsapp number in appointment booking form in navbar
+2. update whatsapp no in catalog whatsapp inquiry in home page & catalog page
+3. for catalog deatils modal, decrease the size of modal to fit in mobile screen.
+4. add real catalog with image, and content
+5. update footer links, and ui for mobile
+6. add 3 real blogs
+7. update whatsapp inquiry message - add catalog image to be sent to whatsapp inquiry and update the message.

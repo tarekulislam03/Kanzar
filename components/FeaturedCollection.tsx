@@ -3,7 +3,6 @@
 import React from 'react'
 import Link from 'next/link'
 import CatalogGrid from './CatalogGrid'
-import HallmarkSeal from './HallmarkSeal'
 import { JewelleryItem } from '../lib/sanity'
 
 interface FeaturedCollectionProps {
@@ -12,29 +11,34 @@ interface FeaturedCollectionProps {
 
 export default function FeaturedCollection({ items }: FeaturedCollectionProps) {
   return (
-    <section id="collections" className="py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-[#DEDAD2]">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <HallmarkSeal size={28} />
-              <span className="text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-medium">
-                Our Collection
-              </span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-light text-[#1C1A17]">
-              Hallmarked Gold, Every Occasion
-            </h2>
-          </div>
+    <section id="collections" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
+      <div className="max-w-6xl mx-auto flex flex-col items-center">
+
+        {/* Centered Louis Vuitton Header */}
+        <div className="text-center mb-12 sm:mb-16">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-[#1C1A17]/60 font-medium block mb-2">
+            ATELIER SELECTION
+          </span>
+          <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#1C1A17] tracking-tight">
+            Explore the Atelier Highlights
+          </h2>
+        </div>
+
+        {/* 4-Column Minimalist Grid */}
+        <div className="w-full mb-12 sm:mb-16">
+          <CatalogGrid initialItems={items} showCategoryFilter={false} maxItems={4} />
+        </div>
+
+        {/* Centered Minimalist Rectangular Button CTA */}
+        <div>
           <Link
             href="/catalog"
-            className="mt-4 md:mt-0 text-xs font-medium uppercase tracking-[0.15em] text-[#1C1A17] hover:text-[#9C7A45] transition-colors"
+            className="inline-block border border-[#1C1A17] text-[#1C1A17] rounded-none px-8 sm:px-10 py-3.5 sm:py-4 text-[11px] sm:text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#1C1A17] hover:text-white transition-all duration-300"
           >
-            View Complete Collection →
+            Discover the Collection
           </Link>
         </div>
 
-        <CatalogGrid initialItems={items} showCategoryFilter={true} />
       </div>
     </section>
   )

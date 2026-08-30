@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import { MessageCircle } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { JewelleryItem, urlFor } from '../lib/sanity'
 
 interface JewelleryCardProps {
@@ -11,74 +11,52 @@ interface JewelleryCardProps {
   isSingleOxbloodTag?: boolean
 }
 
-export default function JewelleryCard({ item, onSelect, isSingleOxbloodTag = false }: JewelleryCardProps) {
+export default function JewelleryCard({ item, onSelect }: JewelleryCardProps) {
+  const [isLiked, setIsLiked] = useState(false)
   const imageUrl = item.images && item.images.length > 0 ? urlFor(item.images[0]) : '/images/hero-bridal.png'
-
-  const whatsappMessage = encodeURIComponent(
-    `Hello Musaddik Jewellery, I am inquiring about the "${item.name}" (${item.material}) from your catalog.`
-  )
-  const whatsappUrl = `https://wa.me/918025589000?text=${whatsappMessage}`
 
   return (
     <div
       onClick={() => onSelect(item)}
-      className="group bg-[#FAF8F3] border border-[#DEDAD2] p-4 flex flex-col justify-between transition-all duration-300 hover:border-[#9C7A45] cursor-pointer select-none active:bg-[#EAE6DD]/30"
+      className="group flex flex-col cursor-pointer select-none transition-all duration-300"
     >
-      {/* Image Container with Porcelain Background */}
-      <div className="relative aspect-square w-full bg-[#EAE6DD] overflow-hidden mb-4">
+      {/* Louis Vuitton Style Neutral Image Box */}
+      <div className="relative aspect-[4/5] w-full bg-[#F3F1ED] overflow-hidden mb-3.5 flex items-center justify-center">
         <Image
           src={imageUrl}
           alt={item.name}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
         />
 
-        {/* Optional single oxblood bridal tag as permitted in PROMPTS.md */}
-        {isSingleOxbloodTag && item.category === 'bridal sets' ? (
-          <div className="absolute top-3 left-3 bg-[#5E1A1F] text-[#FAF8F3] px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] font-medium">
-            BRIDAL COLLECTION
-          </div>
-        ) : (
-          <div className="absolute top-3 left-3 bg-[#FAF8F3]/90 text-[#9C7A45] border border-[#DEDAD2] px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] font-medium">
-            {item.category}
-          </div>
-        )}
+        {/* Minimalist Heart Icon (Top Right) */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            setIsLiked(!isLiked)
+          }}
+          className="absolute top-3 right-3 p-1.5 rounded-full text-[#1C1A17]/60 hover:text-[#1C1A17] transition-colors z-10"
+          aria-label="Save piece"
+        >
+          <Heart
+            className={`w-4 h-4 transition-colors ${
+              isLiked ? 'fill-[#9C7A45] text-[#9C7A45]' : 'stroke-[1.5]'
+            }`}
+          />
+        </button>
       </div>
 
-      {/* Item Information */}
-      <div className="flex-1 flex flex-col justify-between space-y-3">
-        <div>
-          <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-medium mb-1">
-            {item.material}
-          </span>
+      {/* Louis Vuitton Style Minimalist Left-Aligned Information */}
+      <div className="flex flex-col text-left px-0.5">
+        <h3 className="text-xs sm:text-[13px] font-normal text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors leading-snug truncate">
+          {item.name}
+        </h3>
 
-          <h3 className="font-serif text-lg font-normal text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors leading-snug">
-            {item.name}
-          </h3>
-
-          <p className="mt-1.5 text-xs text-[#1C1A17]/70 line-clamp-2 font-light leading-relaxed">
-            {item.shortDescription}
-          </p>
-        </div>
-
-        {/* Action: Enquire on WhatsApp & View Details */}
-        <div className="pt-3 border-t border-[#DEDAD2] flex items-center justify-between">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="text-xs uppercase tracking-[0.15em] text-[#1C1A17] hover:text-[#9C7A45] font-medium flex items-center gap-1.5 transition-colors cursor-pointer"
-          >
-            <MessageCircle className="w-3.5 h-3.5 text-[#9C7A45]" />
-            <span>WhatsApp Enquire</span>
-          </a>
-
-          <span className="text-[10px] uppercase tracking-wider text-[#9C7A45] font-medium">
-            Details →
-          </span>
-        </div>
+        <p className="text-[11px] text-[#1C1A17]/60 font-light mt-0.5 tracking-tight">
+          {item.material || 'Certified 22K Gold'}
+        </p>
       </div>
     </div>
   )
