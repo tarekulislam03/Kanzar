@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import HeroSection from '../../components/HeroSection'
 import HeritageStrip from '../../components/HeritageStrip'
+import GoldMacroTransitionSection from '../../components/GoldMacroTransitionSection'
 import FeaturedCollection from '../../components/FeaturedCollection'
 import CraftsmanshipSection from '../../components/CraftsmanshipSection'
 import BlogCard from '../../components/BlogCard'
@@ -22,24 +23,21 @@ export default async function HomePage() {
 
       {/* 2. Heritage / About Strip */}
       <div id="heritage">
-        <RevealOnScroll direction="up" duration={900}>
-          <HeritageStrip />
-        </RevealOnScroll>
+        <HeritageStrip />
       </div>
 
-      {/* 3. Catalog Section */}
+      {/* 3. Gold Jewellery Macro Moment & Filmic Section Transition */}
+      <GoldMacroTransitionSection />
+
+      {/* 4. Catalog Section */}
       <div id="collections">
-        <RevealOnScroll direction="up" duration={900}>
-          <FeaturedCollection items={items} />
-        </RevealOnScroll>
+        <FeaturedCollection items={items} />
       </div>
 
-      {/* 4. Craftsmanship & Trust Section */}
-      <RevealOnScroll direction="up" duration={900}>
-        <CraftsmanshipSection />
-      </RevealOnScroll>
+      {/* 5. Craftsmanship & Trust Section */}
+      <CraftsmanshipSection />
 
-      {/* 5. Blog Preview Section */}
+      {/* 6. Blog Preview Section */}
       <section id="journal" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           
@@ -79,7 +77,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 6. Flagship Atelier Map & Contact Enquiry Section */}
+      {/* 7. Flagship Atelier Map & Contact Enquiry Section */}
       <div id="visit">
         <RevealOnScroll direction="up" duration={900}>
           <StoreContactMapSection />
@@ -88,3 +86,4 @@ export default async function HomePage() {
     </div>
   )
 }
+

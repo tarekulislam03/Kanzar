@@ -2,6 +2,12 @@
 
 import React, { useEffect, useState, createContext, useContext } from 'react'
 import Lenis from 'lenis'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const LenisContext = createContext<Lenis | null>(null)
 
@@ -11,14 +17,17 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   const [lenis, setLenis] = useState<Lenis | null>(null)
 
   useEffect(() => {
+    const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+
     const lenisInstance = new Lenis({
-      duration: 1.2,
+      duration: isTouch ? 1.0 : 1.3,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 1.8,
+      touchMultiplier: 1.6,
+      infinite: false,
     })
 
     setLenis(lenisInstance)
@@ -26,17 +35,18 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       ;(window as any).__LENIS__ = lenisInstance
     }
 
-    let reqId: number
+    // Synchronize Lenis scroll position with GSAP ScrollTrigger
+    lenisInstance.on('scroll', ScrollTrigger.update)
 
-    function raf(time: number) {
-      lenisInstance.raf(time)
-      reqId = requestAnimationFrame(raf)
+    const updateGSAP = (time: number) => {
+      lenisInstance.raf(time * 1000)
     }
 
-    reqId = requestAnimationFrame(raf)
+    gsap.ticker.add(updateGSAP)
+    gsap.ticker.lagSmoothing(0)
 
     return () => {
-      cancelAnimationFrame(reqId)
+      gsap.ticker.remove(updateGSAP)
       lenisInstance.destroy()
     }
   }, [])
@@ -47,3 +57,5 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     </LenisContext.Provider>
   )
 }
+
+

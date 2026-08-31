@@ -117,7 +117,7 @@ export default function JewelleryModal({ item, onClose }: JewelleryModalProps) {
                           activeImageIndex === idx ? 'border-[#9C7A45] ring-1 ring-[#9C7A45]' : 'border-[#DEDAD2] opacity-60'
                         }`}
                       >
-                        <Image src={src} alt={`${item.name} thumb ${idx}`} fill className="object-cover" />
+                        <Image src={src} alt={`${item.name} thumb ${idx}`} fill sizes="48px" className="object-cover" />
                       </button>
                     )
                   })}

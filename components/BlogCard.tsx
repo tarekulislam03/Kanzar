@@ -19,17 +19,19 @@ export default function BlogCard({ post }: BlogCardProps) {
   })
 
   return (
-    <article className="group flex flex-col cursor-pointer select-none transition-all duration-300">
+    <article className="group flex flex-col cursor-pointer select-none transition-all duration-500">
       <Link href={`/blog/${slugString}`} className="block">
         {/* Minimal Neutral Image Box */}
-        <div className="relative aspect-[4/3] w-full bg-[#F3F1ED] overflow-hidden mb-3.5 flex items-center justify-center">
+        <div className="relative aspect-[4/3] w-full bg-[#F3F1ED] overflow-hidden mb-3.5 flex items-center justify-center shadow-xs">
           <Image
             src={imageUrl}
             alt={post.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+            className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
           />
+          {/* Studio Light Sweep Overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFE58F]/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none mix-blend-overlay" />
         </div>
 
         {/* Minimalist Information */}
@@ -46,3 +48,4 @@ export default function BlogCard({ post }: BlogCardProps) {
     </article>
   )
 }
+

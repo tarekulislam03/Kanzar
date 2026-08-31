@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
-html {
+html, body {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+  touch-action: manipulation;
 }
 
 @layer base {
@@ -19,6 +22,7 @@ html {
     font-family: var(--font-body), system-ui, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, .font-serif {

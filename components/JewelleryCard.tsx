@@ -18,17 +18,23 @@ export default function JewelleryCard({ item, onSelect }: JewelleryCardProps) {
   return (
     <div
       onClick={() => onSelect(item)}
-      className="group flex flex-col cursor-pointer select-none transition-all duration-300"
+      className="group flex flex-col cursor-pointer select-none transition-all duration-500"
     >
-      {/* Louis Vuitton Style Neutral Image Box */}
-      <div className="relative aspect-[4/5] w-full bg-[#F3F1ED] overflow-hidden mb-3.5 flex items-center justify-center">
+      {/* Louis Vuitton Style Neutral Image Box with Studio Light Sheen */}
+      <div className="relative aspect-[4/5] w-full bg-[#F3F1ED] overflow-hidden mb-3.5 flex items-center justify-center shadow-xs">
         <Image
           src={imageUrl}
           alt={item.name}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+          className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
         />
+
+        {/* Studio Light Sweep Effect across gold surface on hover */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFE58F]/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none mix-blend-overlay" />
+
+        {/* Subtle Dark Vignette Border */}
+        <div className="absolute inset-0 border border-black/5 pointer-events-none group-hover:border-[#9C7A45]/30 transition-colors duration-500" />
 
         {/* Minimalist Heart Icon (Top Right) */}
         <button
@@ -61,3 +67,4 @@ export default function JewelleryCard({ item, onSelect }: JewelleryCardProps) {
     </div>
   )
 }
+
