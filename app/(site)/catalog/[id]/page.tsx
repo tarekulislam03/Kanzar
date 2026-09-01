@@ -1,21 +1,58 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getJewelleryItemById, urlFor } from '../../../../lib/sanity'
+import { getProductJsonLd } from '../../../../lib/seo'
 import { Sparkles, ArrowLeft, ShieldCheck, Gem, Calendar } from 'lucide-react'
 
 interface ItemPageProps {
   params: Promise<{ id: string }>
 }
 
-export async function generateMetadata({ params }: ItemPageProps) {
+export async function generateMetadata({ params }: ItemPageProps): Promise<Metadata> {
   const { id } = await params
   const item = await getJewelleryItemById(id)
-  if (!item) return { title: 'Item Not Found | Musaddik Jewellery' }
+  if (!item) {
+    return {
+      title: 'Item Not Found | Musaddik Jewellery',
+      description: 'The requested jewellery piece could not be found.',
+      alternates: { canonical: `/catalog/${id}` },
+    }
+  }
+
+  const imageList = item.images && item.images.length > 0 ? item.images : ['/images/hero-bridal.png']
+  const primaryImageUrl = urlFor(imageList[0])
+
   return {
     title: `${item.name} | Musaddik Jewellery`,
     description: item.shortDescription,
+    alternates: {
+      canonical: `/catalog/${id}`,
+    },
+    openGraph: {
+      title: `${item.name} | Musaddik Jewellery`,
+      description: item.shortDescription,
+      url: `/catalog/${id}`,
+      siteName: 'Musaddik Jewellery',
+      locale: 'en_US',
+      type: 'article',
+      images: [
+        {
+          url: primaryImageUrl,
+          width: 1200,
+          height: 630,
+          alt: item.name,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${item.name} | Musaddik Jewellery`,
+      description: item.shortDescription,
+      images: [primaryImageUrl],
+    },
   }
 }
 
@@ -29,9 +66,14 @@ export default async function JewelleryItemDetailPage({ params }: ItemPageProps)
 
   const imageList = item.images && item.images.length > 0 ? item.images : ['/images/hero-bridal.png']
   const primaryImageUrl = urlFor(imageList[0])
+  const productJsonLd = getProductJsonLd(item, primaryImageUrl)
 
   return (
     <div className="min-h-screen py-16 bg-[#0A0B0E]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           href="/catalog"

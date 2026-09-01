@@ -1,8 +1,10 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getBlogPostBySlug, urlFor } from '../../../../lib/sanity'
+import { getBlogPostingJsonLd } from '../../../../lib/seo'
 import HallmarkSeal from '../../../../components/HallmarkSeal'
 import { ArrowLeft } from 'lucide-react'
 
@@ -10,13 +12,49 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps) {
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
   const post = await getBlogPostBySlug(slug)
-  if (!post) return { title: 'Article Not Found | Musaddik Journal' }
+  if (!post) {
+    return {
+      title: 'Article Not Found | Musaddik Journal',
+      description: 'The requested article could not be found.',
+      alternates: { canonical: `/blog/${slug}` },
+    }
+  }
+
+  const coverImageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/blog-bridal-guide.png'
+
   return {
     title: `${post.title} | Musaddik Journal`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: `${post.title} | Musaddik Journal`,
+      description: post.excerpt,
+      url: `/blog/${slug}`,
+      siteName: 'Musaddik Jewellery',
+      publishedTime: post.publishedAt,
+      authors: post.author ? [post.author] : ['Musaddik Master Artisans'],
+      locale: 'en_US',
+      type: 'article',
+      images: [
+        {
+          url: coverImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} | Musaddik Journal`,
+      description: post.excerpt,
+      images: [coverImageUrl],
+    },
   }
 }
 
@@ -29,6 +67,17 @@ export default async function BlogPostDetailPage({ params }: BlogPostPageProps) 
   }
 
   const coverImageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/blog-bridal-guide.png'
+  const blogPostingJsonLd = getBlogPostingJsonLd(
+    {
+      _id: post._id,
+      title: post.title,
+      slug,
+      excerpt: post.excerpt,
+      publishedAt: post.publishedAt,
+      author: post.author,
+    },
+    coverImageUrl
+  )
   const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
@@ -37,6 +86,10 @@ export default async function BlogPostDetailPage({ params }: BlogPostPageProps) 
 
   return (
     <article className="min-h-screen py-20 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <div className="max-w-3xl mx-auto">
         <Link
           href="/blog"

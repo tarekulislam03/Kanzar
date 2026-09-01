@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Fraunces, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import { SITE_URL, SITE_NAME, DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../lib/seo'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -17,9 +18,12 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Musaddik Jewellery | Traditional Gold & Bridal Jewellery',
-  description:
-    'Handcrafted 22K gold, uncut Kundan, certified Polki diamonds, and temple jewellery. Est. 1978. Visit our flagship store or enquire on WhatsApp.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
   keywords: [
     'Musaddik Jewellery',
     'Gold Jewellery',
@@ -28,14 +32,56 @@ export const metadata: Metadata = {
     'Polki Diamonds',
     '22K Gold',
     'BIS Hallmark',
+    'Bangalore Jewellers',
+    'Indian Heritage Jewellery',
   ],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: './',
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/images/logo-kanzar.png', type: 'image/png', sizes: '1000x1000' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
-    title: 'Musaddik Jewellery | Traditional Gold & Bridal Jewellery',
-    description: 'Understated luxury, handcrafted 22K gold and heritage bridal collections.',
-    url: 'https://musaddik-jewellery.vercel.app',
-    siteName: 'Musaddik Jewellery',
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/images/hero-bridal.png',
+        width: 1200,
+        height: 630,
+        alt: 'Musaddik Jewellery Heritage Collection',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: ['/images/hero-bridal.png'],
   },
 }
 
