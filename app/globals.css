@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-html, body {
+html,
+body {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: none;
@@ -9,11 +10,11 @@ html, body {
 
 @layer base {
   :root {
-    --bg-porcelain: #FAF8F3;
-    --text-soft-ink: #1C1A17;
-    --accent-brass: #9C7A45;
-    --divider-grey: #DEDAD2;
-    --bridal-oxblood: #5E1A1F;
+    --bg-porcelain: #FFFFFF;
+    --text-soft-ink: #2B1F22;
+    --accent-brass: #C48793;
+    --divider-grey: #E8DCDA;
+    --bridal-oxblood: #8B4A56;
   }
 
   body {
@@ -25,12 +26,19 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, .font-serif {
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
     font-family: var(--font-heading), Georgia, serif;
     font-weight: 300;
   }
 
-  a, button, [role="button"], select {
+  a,
+  button,
+  [role="button"],
+  select {
     cursor: pointer;
     touch-action: manipulation;
   }
@@ -44,45 +52,51 @@ html, body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #FAF8F3;
-}
-::-webkit-scrollbar-thumb {
-  background: #DEDAD2;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #9C7A45;
+  background: #FFFFFF;
 }
 
-/* Antique Brass Accent Utilities */
+::-webkit-scrollbar-thumb {
+  background: #E8DCDA;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C48793;
+}
+
+/* Dusky Pink Accent Utilities */
 .text-brass {
-  color: #9C7A45;
+  color: #C48793;
 }
 
 .bg-brass {
-  background-color: #9C7A45;
+  background-color: #C48793;
 }
 
 .border-brass {
-  border-color: #9C7A45;
+  border-color: #C48793;
 }
 
 .border-warm-grey {
-  border-color: #DEDAD2;
+  border-color: #E8DCDA;
 }
 
 .bg-porcelain {
-  background-color: #FAF8F3;
+  background-color: #FFFFFF;
 }
 
 .text-soft-ink {
-  color: #1C1A17;
+  color: #2B1F22;
 }
 
 /* Focus outline for accessibility */
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
-  outline: 2px solid #9C7A45;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #C48793;
   outline-offset: 2px;
 }
 
@@ -91,6 +105,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -110,7 +125,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 /* Glassmorphism Mobile WebKit Compatibility */
 .backdrop-glass-nav {
-  background-color: rgba(245, 240, 230, 0.85) !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-transform: translate3d(0, 0, 0);
@@ -119,7 +134,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 .backdrop-glass-drawer {
-  background-color: rgba(250, 248, 243, 0.95) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-transform: translate3d(0, 0, 0);

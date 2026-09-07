@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     url: '/',
-    siteName: 'Musaddik Jewellery',
+    siteName: 'Kanzar',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: '/images/hero-bridal.png',
         width: 1200,
         height: 630,
-        alt: 'Musaddik Jewellery Heritage Collection',
+        alt: 'Kanzar Collection',
       },
     ],
   },
@@ -50,7 +50,7 @@ export default async function HomePage() {
   const storeJsonLd = getJewelryStoreJsonLd()
 
   return (
-    <div className="bg-[#FAF8F3] text-[#1C1A17] overflow-hidden">
+    <div className="bg-[#D193A3] text-[#1C1A17] overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(storeJsonLd) }}
@@ -62,18 +62,14 @@ export default async function HomePage() {
       <div id="heritage">
         <HeritageStrip />
       </div>
-
-      {/* 3. Gold Jewellery Macro Moment & Filmic Section Transition */}
-      <GoldMacroTransitionSection />
+      
 
       {/* 4. Catalog Section */}
       <div id="collections">
         <FeaturedCollection items={items} />
       </div>
 
-      {/* 5. Craftsmanship & Trust Section */}
-      <CraftsmanshipSection />
-
+      
       {/* 6. Blog Preview Section */}
       <section id="journal" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
         <div className="max-w-6xl mx-auto flex flex-col items-center">

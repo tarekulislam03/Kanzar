@@ -16,7 +16,7 @@ export default function HeritageStrip() {
   const quoteText =
     "Kanzar Jewels upholds the tradition of fine 22 karat gold craftsmanship, specialising in hallmarked jewellery built on trust and purity. Now, for the first time, that legacy arrives in Kolkata — every piece certified with the official BIS hallmark, priced with complete transparency, and made to be treasured for generations."
 
-  useEffect(() => {
+     useEffect(() => {
     if (!containerRef.current) return
 
     const ctx = gsap.context(() => {
@@ -69,7 +69,7 @@ export default function HeritageStrip() {
   return (
     <section
       ref={containerRef}
-      className="relative py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2] overflow-hidden select-none"
+      className="relative py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF6F3] border-b border-[#DEDAD2] overflow-hidden select-none"
     >
       {/* Background Watermark Horizontal Scrolling Text */}
       <div
@@ -80,13 +80,13 @@ export default function HeritageStrip() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-        <span className="block text-[11px] uppercase tracking-[0.25em] text-[#9C7A45] font-semibold">
+        <span className="block text-[11px] uppercase tracking-[0.25em] text-[#2A2422] font-semibold">
           OUR HERITAGE
         </span>
 
         <h2
           ref={quoteRef}
-          className="font-serif text-2xl sm:text-4xl font-light text-[#1C1A17] leading-relaxed flex flex-wrap justify-center gap-x-2.5 gap-y-1"
+          className="font-serif text-2xl sm:text-4xl font-light text-[#2A2422] leading-relaxed flex flex-wrap justify-center gap-x-2.5 gap-y-1"
         >
           {wordsArray.map((word, idx) => (
             <span key={idx} className="word-span inline-block transition-colors">
