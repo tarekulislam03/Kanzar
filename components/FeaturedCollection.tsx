@@ -16,11 +16,11 @@ export default function FeaturedCollection({ items }: FeaturedCollectionProps) {
 
         {/* Centered Louis Vuitton Header */}
         <div className="text-center mb-12 sm:mb-16">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-[#1C1A17]/60 font-medium block mb-2">
-            ATELIER SELECTION
+          <span className="text-[10px] uppercase tracking-[0.3em] text-[#6E6259]/60 font-medium block mb-2">
+            Our Collections
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#1C1A17] tracking-tight">
-            Explore the Atelier Highlights
+          <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#2A2422] tracking-tight">
+            Pick You Perfect Match
           </h2>
         </div>
 
@@ -33,7 +33,7 @@ export default function FeaturedCollection({ items }: FeaturedCollectionProps) {
         <div>
           <Link
             href="/catalog"
-            className="inline-block border border-[#1C1A17] text-[#1C1A17] rounded-none px-8 sm:px-10 py-3.5 sm:py-4 text-[11px] sm:text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#1C1A17] hover:text-white transition-all duration-300"
+            className="inline-block border border-[#9C6B68] text-[#9C6B68] rounded-none px-8 sm:px-10 py-3.5 sm:py-4 text-[11px] sm:text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#C99A94] hover:text-white transition-all duration-300"
           >
             Discover the Collection
           </Link>

@@ -36,22 +36,7 @@ export default function JewelleryCard({ item, onSelect }: JewelleryCardProps) {
         {/* Subtle Dark Vignette Border */}
         <div className="absolute inset-0 border border-black/5 pointer-events-none group-hover:border-[#9C7A45]/30 transition-colors duration-500" />
 
-        {/* Minimalist Heart Icon (Top Right) */}
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation()
-            setIsLiked(!isLiked)
-          }}
-          className="absolute top-3 right-3 p-1.5 rounded-full text-[#1C1A17]/60 hover:text-[#1C1A17] transition-colors z-10"
-          aria-label="Save piece"
-        >
-          <Heart
-            className={`w-4 h-4 transition-colors ${
-              isLiked ? 'fill-[#9C7A45] text-[#9C7A45]' : 'stroke-[1.5]'
-            }`}
-          />
-        </button>
+        
       </div>
 
       {/* Louis Vuitton Style Minimalist Left-Aligned Information */}

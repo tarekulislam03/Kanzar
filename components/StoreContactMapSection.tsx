@@ -33,17 +33,15 @@ export default function StoreContactMapSection() {
             <HallmarkSeal size={36} />
           </div>
 
-          <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
+          <span className="block text-[11px] uppercase tracking-[0.2em] text-[#6E6259] font-semibold">
             OUR LOCATION
           </span>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#1C1A17]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#2A2422]">
             Visit Our Store
           </h2>
 
-          <p className="text-xs sm:text-sm text-[#1C1A17]/70 font-light leading-relaxed">
-            Step into Kanzar Jewels and experience our collection in person — hallmarked gold, expert guidance, and honest pricing, all under one roof.
-          </p>
+          
         </div>
 
         {/* Height-matched grid layout */}
@@ -58,17 +56,17 @@ export default function StoreContactMapSection() {
             </div>
 
             {/* Store Information Cards */}
-            <div className="bg-[#FAF8F3] border border-[#DEDAD2] p-5 space-y-6 flex-shrink-0">
-              <h3 className="font-serif text-xl text-[#1C1A17] font-normal border-b border-[#DEDAD2] pb-3">
+            <div className="bg-[#FAF8F3] border border-[#C99A94] p-5 space-y-6 flex-shrink-0">
+              <h3 className="font-serif text-xl text-[#2A2422] font-normal border-b border-[#C99A94] pb-3">
                 Store Location
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-[#1C1A17]/80 font-light leading-relaxed">
                 {/* Address */}
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#9C7A45] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#9C6B68] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
+                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C6B68] font-semibold mb-1">
                       LOCATION
                     </span>
                     <p className="text-sm font-medium text-[#1C1A17]">P-4B, CIT Road</p>
@@ -79,9 +77,9 @@ export default function StoreContactMapSection() {
 
                 {/* Hours */}
                 <div className="flex items-start gap-3">
-                  <Clock className="w-4 h-4 text-[#9C7A45] shrink-0 mt-0.5" />
+                  <Clock className="w-4 h-4 text-[#9C6B68] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
+                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C6B68] font-semibold mb-1">
                       STORE HOURS
                     </span>
                     <p className="text-sm font-medium text-[#1C1A17]">Monday – Saturday</p>
@@ -92,9 +90,9 @@ export default function StoreContactMapSection() {
 
                 {/* Phone */}
                 <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-[#9C7A45] shrink-0 mt-0.5" />
+                  <Phone className="w-4 h-4 text-[#9C6B68] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
+                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C6B68] font-semibold mb-1">
                       PHONE
                     </span>
                     <p className="font-medium text-[#1C1A17]">+033-4535-6632</p>
@@ -104,9 +102,9 @@ export default function StoreContactMapSection() {
 
                 {/* Email */}
                 <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-[#9C7A45] shrink-0 mt-0.5" />
+                  <Mail className="w-4 h-4 text-[#9C6B68] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C7A45] font-semibold mb-1">
+                    <span className="block text-[10px] uppercase tracking-[0.15em] text-[#9C6B68] font-semibold mb-1">
                       EMAIL
                     </span>
                     <p className="font-medium text-[#1C1A17]">kanzarjewels@gmail.com</p>
@@ -116,37 +114,37 @@ export default function StoreContactMapSection() {
               </div>
 
               {/* Instant WhatsApp Enquiry Action */}
-              <div className="pt-3 border-t border-[#DEDAD2]">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 pl-3 border border-[#1C1A17] bg-transparent text-[#1C1A17] text-[10px] font-medium uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2.5 hover:border-[#9C7A45] hover:text-[#9C7A45]"
-                >
-                  <MessageCircle className="w-4 h-4 text-[#9C7A45]" />
-                  <span>Instant WhatsApp Enquiry</span>
-                </a>
-              </div>
+              <div className="pt-3 border-t border-[#F3E2DD]">
+<a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group w-full py-3.5 pl-3 border border-[#9C6B68] bg-transparent text-[#9C6B68] text-[10px] font-medium uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2.5 hover:bg-[#C99A94] hover:border-[#C99A94] hover:text-[#FAF6F3]"
+  >
+                <MessageCircle className="w-4 h-4 text-[#9C6B68] group-hover:text-[#FAF6F3] transition-colors" />
+                <span>Instant WhatsApp Enquiry</span>
+              </a>
+            </div>
             </div>
           </div>
 
           {/* Right Column: Contact & Visit Form (5 cols) matching height */}
-          <div className="lg:col-span-5 bg-[#FAF8F3] border border-[#DEDAD2] p-5 shadow-sm flex flex-col justify-between h-full">
+          <div className="lg:col-span-5 bg-[#FAF6F3] border border-[#F3E2DD] p-5 shadow-sm flex flex-col justify-between h-full">
             {submitted ? (
               <div className="py-12 my-auto text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-[#EAE4D6] border border-[#9C7A45] flex items-center justify-center mx-auto text-[#9C7A45]">
+                <div className="w-12 h-12 rounded-full bg-[#F3E2DD] border border-[#9C6B68] flex items-center justify-center mx-auto text-[#9C6B68]">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h3 className="font-serif text-2xl text-[#1C1A17] font-light">
+                <h3 className="font-serif text-2xl text-[#2A2422] font-light">
                   Enquiry Submitted
                 </h3>
-                <p className="text-xs text-[#1C1A17]/70 font-light leading-relaxed max-w-xs mx-auto">
-                  Thank you, <span className="font-medium text-[#1C1A17]">{formData.name}</span>. Our concierge team will reach out shortly to confirm your store visit request.
+                <p className="text-xs text-[#2A2422]/70 font-light leading-relaxed max-w-xs mx-auto">
+                  Thank you, <span className="font-medium text-[#2A2422]">{formData.name}</span>. Our concierge team will reach out shortly to confirm your store visit request.
                 </p>
                 <div className="pt-4">
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="px-6 py-3 border border-[#1C1A17] text-xs uppercase tracking-wider text-[#1C1A17] hover:border-[#9C7A45] hover:text-[#9C7A45] transition-colors"
+                    className="px-6 py-3 border border-[#2A2422] text-xs uppercase tracking-wider text-[#2A2422] hover:border-[#9C6B68] hover:text-[#9C6B68] transition-colors"
                   >
                     Send Another Message
                   </button>
@@ -155,13 +153,13 @@ export default function StoreContactMapSection() {
             ) : (
               <div className="flex flex-col justify-between h-full">
                 <div>
-                  <span className="block text-[10px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold mb-1">
+                  <span className="block text-[10px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold mb-1">
                     BOOK A VISIT & ENQUIRE
                   </span>
-                  <h3 className="font-serif text-2xl font-normal text-[#1C1A17] mb-2">
+                  <h3 className="font-serif text-2xl font-normal text-[#2A2422] mb-2">
                     Send Store Enquiry
                   </h3>
-                  <p className="text-xs text-[#1C1A17]/60 mb-4 font-light">
+                  <p className="text-xs text-[#2A2422]/60 mb-4 font-light">
                     Reserve a viewing slot or send us a message. Our master goldsmiths will prepare your requested pieces prior to your arrival.
                   </p>
                 </div>
@@ -169,7 +167,7 @@ export default function StoreContactMapSection() {
                 <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col justify-between">
                   <div className="space-y-3.5 flex-1 flex flex-col">
                     <div>
-                      <label className="block text-[10px] uppercase tracking-wider text-[#9C7A45] mb-1 font-semibold">
+                      <label className="block text-[10px] uppercase tracking-wider text-[#9C6B68] mb-1 font-semibold">
                         Full Name *
                       </label>
                       <input
@@ -178,12 +176,12 @@ export default function StoreContactMapSection() {
                         placeholder="Your Name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[#FAF8F3] border border-[#DEDAD2] px-4 py-2.5 text-xs text-[#1C1A17] focus:outline-none focus:border-[#9C7A45]"
+                        className="w-full bg-[#FAF6F3] border border-[#F3E2DD] px-4 py-2.5 text-xs text-[#2A2422] focus:outline-none focus:border-[#9C6B68]"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] uppercase tracking-wider text-[#9C7A45] mb-1 font-semibold">
+                      <label className="block text-[10px] uppercase tracking-wider text-[#9C6B68] mb-1 font-semibold">
                         Phone / WhatsApp Number *
                       </label>
                       <input
@@ -192,30 +190,30 @@ export default function StoreContactMapSection() {
                         placeholder="+91 98765 43210"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[#FAF8F3] border border-[#DEDAD2] px-4 py-2.5 text-xs text-[#1C1A17] focus:outline-none focus:border-[#9C7A45]"
+                        className="w-full bg-[#FAF6F3] border border-[#F3E2DD] px-4 py-2.5 text-xs text-[#2A2422] focus:outline-none focus:border-[#9C6B68]"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] uppercase tracking-wider text-[#9C7A45] mb-1 font-semibold">
+                      <label className="block text-[10px] uppercase tracking-wider text-[#9C6B68] mb-1 font-semibold">
                         Preferred Date
                       </label>
                       <input
                         type="date"
                         value={formData.date}
                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                        className="w-full bg-[#FAF8F3] border border-[#DEDAD2] px-4 py-2.5 text-xs text-[#1C1A17] focus:outline-none focus:border-[#9C7A45]"
+                        className="w-full bg-[#FAF6F3] border border-[#F3E2DD] px-4 py-2.5 text-xs text-[#2A2422] focus:outline-none focus:border-[#9C6B68]"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] uppercase tracking-wider text-[#9C7A45] mb-1 font-semibold">
+                      <label className="block text-[10px] uppercase tracking-wider text-[#9C6B68] mb-1 font-semibold">
                         Collection Interest
                       </label>
                       <select
                         value={formData.interest}
                         onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                        className="w-full bg-[#FAF8F3] border border-[#DEDAD2] px-4 py-2.5 text-xs text-[#1C1A17] focus:outline-none focus:border-[#9C7A45]"
+                        className="w-full bg-[#FAF6F3] border border-[#F3E2DD] px-4 py-2.5 text-xs text-[#2A2422] focus:outline-none focus:border-[#9C6B68]"
                       >
                         <option value="Bridal Ensembles">Bridal Ensembles</option>
                         <option value="Necklace Sets">Kundan & Temple Necklaces</option>
@@ -227,23 +225,23 @@ export default function StoreContactMapSection() {
 
                     {/* Stretched Message Field filling all remaining vertical space */}
                     <div className="flex-1 flex flex-col min-h-[110px]">
-                      <label className="block text-[10px] uppercase tracking-wider text-[#9C7A45] mb-1 font-semibold">
+                      <label className="block text-[10px] uppercase tracking-wider text-[#9C6B68] mb-1 font-semibold">
                         Message / Custom Requirements
                       </label>
                       <textarea
                         placeholder="Specify customized bridal preferences or queries..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full flex-1 h-full bg-[#FAF8F3] border border-[#DEDAD2] px-4 py-3 text-xs text-[#1C1A17] focus:outline-none focus:border-[#9C7A45] resize-none"
+                        className="w-full flex-1 h-full bg-[#FAF6F3] border border-[#F3E2DD] px-4 py-3 text-xs text-[#2A2422] focus:outline-none focus:border-[#9C6B68] resize-none"
                       />
                     </div>
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full mt-4 py-4 border border-[#1C1A17] bg-transparent text-[#1C1A17] text-xs font-medium uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2 hover:border-[#9C7A45] hover:text-[#9C7A45]"
+                    className="w-full mt-4 py-4 border border-[#2A2422] bg-transparent text-[#2A2422] text-xs font-medium uppercase tracking-[0.15em] transition-colors flex items-center justify-center gap-2 hover:border-[#9C6B68] hover:text-[#9C6B68]"
                   >
-                    <Send className="w-3.5 h-3.5 text-[#9C7A45]" />
+                    <Send className="w-3.5 h-3.5 text-[#9C6B68]" />
                     <span>Submit Enquiry</span>
                   </button>
                 </form>

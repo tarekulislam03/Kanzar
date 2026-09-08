@@ -70,45 +70,7 @@ export default async function HomePage() {
       </div>
 
       
-      {/* 6. Blog Preview Section */}
-      <section id="journal" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
-        <div className="max-w-6xl mx-auto flex flex-col items-center">
-          
-          {/* Centered Louis Vuitton Style Header */}
-          <RevealOnScroll direction="up">
-            <div className="text-center mb-12 sm:mb-16">
-              <span className="text-[10px] uppercase tracking-[0.3em] text-[#1C1A17]/60 font-medium block mb-2">
-                ATELIER JOURNAL
-              </span>
-              <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#1C1A17] tracking-tight">
-                Guides & Gold Care
-              </h2>
-            </div>
-          </RevealOnScroll>
-
-          {/* Minimalist Grid (1x1 on Mobile, 3-Column on Desktop) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 lg:gap-8 w-full mb-12 sm:mb-16">
-            {posts.slice(0, 3).map((post, idx) => (
-              <RevealOnScroll key={post._id} direction="up" delay={idx * 120} duration={800}>
-                <BlogCard post={post} />
-              </RevealOnScroll>
-            ))}
-          </div>
-
-          {/* Centered Minimalist Rectangular Button CTA */}
-          <RevealOnScroll direction="up">
-            <div>
-              <Link
-                href="/blog"
-                className="inline-block border border-[#1C1A17] text-[#1C1A17] rounded-none px-8 sm:px-10 py-3.5 sm:py-4 text-[11px] sm:text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#1C1A17] hover:text-white transition-all duration-300"
-              >
-                View Journal Index
-              </Link>
-            </div>
-          </RevealOnScroll>
-
-        </div>
-      </section>
+     
 
       {/* 7. Flagship Atelier Map & Contact Enquiry Section */}
       <div id="visit">

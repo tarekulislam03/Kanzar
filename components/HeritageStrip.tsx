@@ -80,7 +80,7 @@ export default function HeritageStrip() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-        <span className="block text-[11px] uppercase tracking-[0.25em] text-[#2A2422] font-semibold">
+        <span className="block text-[11px] uppercase tracking-[0.25em] text-[#6E6259] font-semibold">
           OUR HERITAGE
         </span>
 
