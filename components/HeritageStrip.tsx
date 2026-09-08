@@ -69,7 +69,7 @@ export default function HeritageStrip() {
   return (
     <section
       ref={containerRef}
-      className="relative py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF6F3] border-b border-[#DEDAD2] overflow-hidden select-none"
+      className="relative py-14 sm:py-16 px-6 sm:px-10 lg:px-12 bg-[#FAF6F3] border-b border-[#DEDAD2] overflow-hidden select-none"
     >
       {/* Background Watermark Horizontal Scrolling Text */}
       <div

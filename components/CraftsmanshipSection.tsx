@@ -152,7 +152,7 @@ export default function CraftsmanshipSection() {
     <section
       ref={sectionRef}
       id="heritage"
-      className="relative py-24 sm:py-32 px-5 sm:px-10 lg:px-12 bg-[#1A1815] text-white border-b border-[#2D2A26] overflow-hidden select-none"
+      className="relative py-12 sm:py-16 px-5 sm:px-10 lg:px-12 bg-[#1A1815] text-white border-b border-[#2D2A26] overflow-hidden select-none"
     >
       {/* Background Imperial Kundan Model Overlay */}
       <div
@@ -176,7 +176,7 @@ export default function CraftsmanshipSection() {
       {/* Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header Title */}
-        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-24">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.4em] text-[#D4AF37] font-semibold block mb-2">
             AUTHENTICITY & GUARANTEE
           </span>
@@ -229,7 +229,7 @@ export default function CraftsmanshipSection() {
           </div>
 
           {/* 4 Minimalist Roadmap Points */}
-          <div className="space-y-16 sm:space-y-28 relative z-10">
+          <div className="space-y-10 sm:space-y-16 relative z-10">
             {ROADMAP_STEPS.map((step, idx) => {
               const isEven = idx % 2 === 0
               const isActive = activeStep === idx

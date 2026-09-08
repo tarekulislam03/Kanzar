@@ -11,11 +11,11 @@ interface FeaturedCollectionProps {
 
 export default function FeaturedCollection({ items }: FeaturedCollectionProps) {
   return (
-    <section id="collections" className="py-20 sm:py-28 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
+    <section id="collections" className="py-12 sm:py-16 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3] border-b border-[#DEDAD2]">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
 
         {/* Centered Louis Vuitton Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <span className="text-[10px] uppercase tracking-[0.3em] text-[#6E6259]/60 font-medium block mb-2">
             Our Collections
           </span>
@@ -25,7 +25,7 @@ export default function FeaturedCollection({ items }: FeaturedCollectionProps) {
         </div>
 
         {/* 4-Column Minimalist Grid */}
-        <div className="w-full mb-12 sm:mb-16">
+        <div className="w-full mb-8 sm:mb-10">
           <CatalogGrid initialItems={items} showCategoryFilter={false} maxItems={4} />
         </div>
 

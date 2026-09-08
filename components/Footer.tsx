@@ -6,9 +6,9 @@ import HallmarkSeal from './HallmarkSeal'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#FAF8F3] text-[#1C1A17] border-t border-[#DEDAD2] pt-20 pb-12 px-6 sm:px-10 lg:px-12">
+    <footer className="bg-[#FAF8F3] text-[#1C1A17] border-t border-[#DEDAD2] pt-12 pb-8 px-6 sm:px-10 lg:px-12">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-16 border-b border-[#DEDAD2]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-10 border-b border-[#DEDAD2]">
           {/* Brand Column */}
           <div className="space-y-4 md:col-span-1">
             <Link href="/" className="flex items-center gap-3">
@@ -24,32 +24,32 @@ export default function Footer() {
 
           {/* Catalog Categories */}
           <div className="space-y-3">
-            <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
+            <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
               COLLECTIONS
             </span>
             <ul className="space-y-2 text-xs text-[#1C1A17]/70 font-light">
               <li>
-                <Link href="/catalog" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
                   Necklace Sets
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
                   Bangles & Kada
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
                   Earrings & Jhumkas
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
                   Rings & Bands
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
                   Bridal Ensembles
                 </Link>
               </li>
@@ -58,22 +58,22 @@ export default function Footer() {
 
           {/* Quick Links & CMS */}
           <div className="space-y-3">
-            <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
+            <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
               ATELIER & CMS
             </span>
             <ul className="space-y-2 text-xs text-[#1C1A17]/70 font-light">
               <li>
-                <Link href="/" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/" className="hover:text-[#9C6B68] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/blog" className="hover:text-[#9C6B68] transition-colors">
                   Atelier Journal
                 </Link>
               </li>
               <li>
-                <Link href="/visit-us" className="hover:text-[#9C7A45] transition-colors">
+                <Link href="/visit-us" className="hover:text-[#9C6B68] transition-colors">
                   Visit Store
                 </Link>
               </li>
@@ -81,7 +81,7 @@ export default function Footer() {
                 <Link
                   href="/studio"
                   target="_blank"
-                  className="text-[#9C7A45] hover:underline"
+                  className="text-[#9C6B68] hover:underline"
                 >
                   Sanity Studio CMS
                 </Link>
@@ -91,7 +91,7 @@ export default function Footer() {
 
           {/* Store Location */}
           <div className="space-y-3">
-            <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
+            <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
               ADDRESS
             </span>
             <div className="text-xs text-[#1C1A17]/70 leading-relaxed font-light space-y-1">

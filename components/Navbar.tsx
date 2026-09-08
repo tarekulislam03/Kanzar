@@ -8,6 +8,7 @@ import {
   X,
   Calendar,
   Phone,
+  MessageCircle,
   ChevronRight,
   Sparkles,
   Tag
@@ -337,7 +338,7 @@ export default function Navbar() {
                   ${textHoverColor}
                 `}
               >
-                <Phone className="w-3.5 h-3.5" />
+                <MessageCircle className="w-3.5 h-3.5" />
 
                 <span>
                   WhatsApp
@@ -354,7 +355,7 @@ export default function Navbar() {
                   text-[#2A2422]
                 `}
               >
-                <Phone className="w-5 h-5" />
+                <MessageCircle className="w-5 h-5" />
               </a>
 
               {/* Appointment Button */}

@@ -8,7 +8,6 @@ import FeaturedCollection from '../../components/FeaturedCollection'
 import CraftsmanshipSection from '../../components/CraftsmanshipSection'
 import BlogCard from '../../components/BlogCard'
 import StoreContactMapSection from '../../components/StoreContactMapSection'
-import RevealOnScroll from '../../components/RevealOnScroll'
 import { getJewelleryItems, getBlogPosts } from '../../lib/sanity'
 import { getJewelryStoreJsonLd, DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../../lib/seo'
 
@@ -74,9 +73,7 @@ export default async function HomePage() {
 
       {/* 7. Flagship Atelier Map & Contact Enquiry Section */}
       <div id="visit">
-        <RevealOnScroll direction="up" duration={900}>
-          <StoreContactMapSection />
-        </RevealOnScroll>
+        <StoreContactMapSection />
       </div>
     </div>
   )
