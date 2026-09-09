@@ -41,11 +41,11 @@ export default function JewelleryCard({ item, onSelect }: JewelleryCardProps) {
 
       {/* Louis Vuitton Style Minimalist Left-Aligned Information */}
       <div className="flex flex-col text-left px-0.5">
-        <h3 className="text-xs sm:text-[13px] font-normal text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors leading-snug truncate">
+        <h3 className="text-sm sm:text-sm font-normal text-[#1C1A17] group-hover:text-[#9C7A45] transition-colors leading-snug truncate">
           {item.name}
         </h3>
 
-        <p className="text-[11px] text-[#1C1A17]/60 font-light mt-0.5 tracking-tight">
+        <p className="text-xs sm:text-[11px] text-[#1C1A17]/60 font-light mt-0.5 tracking-tight">
           {item.material || 'Certified 22K Gold'}
         </p>
       </div>

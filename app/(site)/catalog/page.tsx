@@ -13,11 +13,11 @@ export const metadata: Metadata = {
     canonical: '/catalog',
   },
   openGraph: {
-    title: 'Jewellery Catalog | Musaddik Jewellery',
+    title: 'Kanzar Collections',
     description:
       'Browse our complete catalog of handcrafted 22K gold neckpieces, uncut Kundan chokers, certified Polki bridal sets, bangles, and rings.',
     url: '/catalog',
-    siteName: 'Musaddik Jewellery',
+    siteName: 'Kanzar',
     locale: 'en_US',
     type: 'website',
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: '/images/hero-bridal.png',
         width: 1200,
         height: 630,
-        alt: 'Musaddik Jewellery Catalog',
+        alt: 'Kanzar Catalog',
       },
     ],
   },
@@ -62,7 +62,7 @@ export default async function CatalogPage() {
   }
 
   return (
-    <div className="min-h-screen py-24 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3]">
+    <div className="min-h-screen py-8 px-6 sm:px-10 lg:px-12 bg-[#FAF8F3]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
@@ -82,13 +82,11 @@ export default async function CatalogPage() {
             Our Collections
           </h1>
 
-          <p className="text-sm text-[#1C1A17]/70 font-light leading-relaxed">
-            Every piece is certified under the official BIS hallmark, guaranteeing genuine gold purity in every purchase.
-          </p>
+
         </div>
 
-        {/* Catalog Grid with Category Filter */}
-        <CatalogGrid initialItems={items} showCategoryFilter={true} />
+        {/* Catalog 4-Column Grid without Filters */}
+        <CatalogGrid initialItems={items} showCategoryFilter={false} layoutStyle="grid" />
       </div>
     </div>
   )

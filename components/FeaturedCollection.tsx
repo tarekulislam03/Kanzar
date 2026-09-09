@@ -16,10 +16,10 @@ export default function FeaturedCollection({ items }: FeaturedCollectionProps) {
 
         {/* Centered Louis Vuitton Header */}
         <div className="text-center mb-8 sm:mb-10">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-[#6E6259]/60 font-medium block mb-2">
+          <span className="text-xs sm:text-[10px] uppercase tracking-[0.3em] text-[#6E6259]/60 font-medium block mb-2">
             Our Collections
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-light text-[#2A2422] tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl font-light text-[#2A2422] tracking-tight">
             Pick You Perfect Match
           </h2>
         </div>

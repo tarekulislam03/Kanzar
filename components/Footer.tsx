@@ -12,54 +12,46 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-4 md:col-span-1">
             <Link href="/" className="flex items-center gap-3">
-              <HallmarkSeal size={32} />
-              <span className="font-serif text-xl font-normal tracking-[0.18em] text-[#1C1A17]">
-                KANZAR
-              </span>
+              <img src="/logo.png" alt="Kanzar" className="h-18 w-auto object-contain" />
             </Link>
             <p className="text-xs text-[#1C1A17]/70 leading-relaxed font-light">
-              Specialising in 100% hallmarked gold jewellery — trusted quality, honest pricing.
+              Enjoy 4.99% Flat Making Charges On 22 Karat
             </p>
           </div>
 
-          {/* Catalog Categories */}
+          {/* Essential Pages */}
           <div className="space-y-3">
             <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
-              COLLECTIONS
+              ESSENTIAL PAGES
             </span>
             <ul className="space-y-2 text-xs text-[#1C1A17]/70 font-light">
               <li>
-                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
-                  Necklace Sets
+                <Link href="/terms-and-conditions" className="hover:text-[#9C6B68] transition-colors">
+                  Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
-                  Bangles & Kada
+                <Link href="/legal-info" className="hover:text-[#9C6B68] transition-colors">
+                  Legal Info
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
-                  Earrings & Jhumkas
+                <Link href="/cookie-policy" className="hover:text-[#9C6B68] transition-colors">
+                  Cookie Policy
                 </Link>
               </li>
               <li>
-                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
-                  Rings & Bands
-                </Link>
-              </li>
-              <li>
-                <Link href="/catalog" className="hover:text-[#9C6B68] transition-colors">
-                  Bridal Ensembles
+                <Link href="/privacy-policy" className="hover:text-[#9C6B68] transition-colors">
+                  Privacy Policy
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Quick Links & CMS */}
+          {/* Quick Links / Atelier */}
           <div className="space-y-3">
             <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
-              ATELIER & CMS
+              ATELIER
             </span>
             <ul className="space-y-2 text-xs text-[#1C1A17]/70 font-light">
               <li>
@@ -75,15 +67,6 @@ export default function Footer() {
               <li>
                 <Link href="/visit-us" className="hover:text-[#9C6B68] transition-colors">
                   Visit Store
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/studio"
-                  target="_blank"
-                  className="text-[#9C6B68] hover:underline"
-                >
-                  Sanity Studio CMS
                 </Link>
               </li>
             </ul>
@@ -103,16 +86,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Copyright & Hallmark Stamp Motif Repeated Small */}
+        {/* Bottom Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#1C1A17]/60 gap-4">
           <div className="flex items-center gap-2">
             <HallmarkSeal size={20} />
             <span>© {new Date().getFullYear()} Kanzar Jewels. All rights reserved.</span>
           </div>
-          <div className="flex items-center gap-4 text-[11px]">
-            <span>100% HALLMARKED</span>
-            <span>TRUSTED QUALITY</span>
-            <span>BEST WHOLESALE PRICES</span>
+          <div className="flex items-center gap-4 text-[12px]">
+            <span>Developed By Kodane</span>
           </div>
         </div>
       </div>

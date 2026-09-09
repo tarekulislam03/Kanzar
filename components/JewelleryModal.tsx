@@ -128,16 +128,16 @@ export default function JewelleryModal({ item, onClose }: JewelleryModalProps) {
             {/* Right Details */}
             <div className="flex flex-col justify-between space-y-2 sm:space-y-4">
               <div className="space-y-1.5 sm:space-y-3">
-                <h2 className="font-serif text-lg sm:text-2xl font-normal text-[#1C1A17] leading-snug">
+                <h2 className="font-serif text-xl sm:text-2xl font-normal text-[#1C1A17] leading-snug">
                   {item.name}
                 </h2>
 
-                <div className="text-[11px] sm:text-xs text-[#9C7A45] uppercase tracking-wider font-medium">
+                <div className="text-xs sm:text-xs text-[#9C7A45] uppercase tracking-wider font-medium">
                   Material: <span className="text-[#1C1A17]">{item.material}</span>
                 </div>
 
                 <div className="border-t border-[#DEDAD2] pt-1.5 sm:pt-3">
-                  <p className="text-[11px] sm:text-xs text-[#1C1A17]/80 leading-relaxed font-light line-clamp-3 sm:line-clamp-none">
+                  <p className="text-xs sm:text-xs text-[#1C1A17]/80 leading-relaxed font-light line-clamp-3 sm:line-clamp-none">
                     {item.shortDescription}
                   </p>
                 </div>

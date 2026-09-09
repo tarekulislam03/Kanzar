@@ -187,7 +187,7 @@ export default function Navbar() {
             }
   `}
         >
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-2 flex items-center justify-center gap-2 sm:gap-4 text-[8.5px] sm:text-[12px] uppercase tracking-[0.18em] font-bold text-center text-[#FAF6F3]">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-2 flex items-center justify-center gap-2 sm:gap-4 text-[7.5px] sm:text-[12px] uppercase tracking-[0.18em] font-bold text-center text-[#FAF6F3]">
 
             {/* Discount Icon Added Here */}
             <Tag className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -296,11 +296,11 @@ export default function Navbar() {
                 className="flex flex-col items-center cursor-pointer group text-center whitespace-nowrap"
               >
                 <img
-                  src="/logo__3_-removebg-preview.png"
+                  src="/logo.png"
                   alt="Kanzar"
                   className="
-                    h-10
-                    sm:h-15
+                    h-8
+                    sm:h-17
                     w-auto
                     object-contain
                     transition-transform

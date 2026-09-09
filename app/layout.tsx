@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Fraunces, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { SITE_URL, SITE_NAME, DEFAULT_TITLE, DEFAULT_DESCRIPTION } from '../lib/seo'
+import CookieConsent from '../components/CookieConsent'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -94,6 +95,7 @@ export default function RootLayout({
     <html lang="en" className={`scroll-smooth ${fraunces.variable} ${jakarta.variable}`}>
       <body className="bg-[#FAF8F3] text-[#1C1A17] antialiased selection:bg-[#9C7A45]/20 selection:text-[#1C1A17]">
         {children}
+        <CookieConsent />
       </body>
     </html>
   )

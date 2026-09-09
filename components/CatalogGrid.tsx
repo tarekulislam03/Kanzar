@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import JewelleryCard from './JewelleryCard'
+import JewelleryRow from './JewelleryRow'
 import JewelleryModal from './JewelleryModal'
 import CategoryFilter from './CategoryFilter'
 import RevealOnScroll from './RevealOnScroll'
@@ -11,22 +12,26 @@ interface CatalogGridProps {
   initialItems: JewelleryItem[]
   showCategoryFilter?: boolean
   maxItems?: number
+  layoutStyle?: 'grid' | 'alternate'
 }
 
 export default function CatalogGrid({
   initialItems,
   showCategoryFilter = false,
-  maxItems = 4, // Louis Vuitton style 4-column layout
+  maxItems,
+  layoutStyle = 'grid',
 }: CatalogGridProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [activeItem, setActiveItem] = useState<JewelleryItem | null>(null)
+
+  const limit = maxItems
 
   const filteredItems =
     selectedCategory === 'all'
       ? initialItems
       : initialItems.filter((item) => item.category === selectedCategory)
 
-  const displayedItems = maxItems ? filteredItems.slice(0, maxItems) : filteredItems
+  const displayedItems = limit ? filteredItems.slice(0, limit) : filteredItems
 
   return (
     <div className="w-full">
@@ -41,8 +46,21 @@ export default function CatalogGrid({
         <div className="text-center py-20 bg-[#F3F1ED] border border-[#DEDAD2]">
           <p className="text-[#1C1A17]/60 text-sm font-light">No pieces found in this category.</p>
         </div>
+      ) : layoutStyle === 'alternate' ? (
+        /* Alternating High-Fashion Layout */
+        <div className="flex flex-col space-y-4">
+          {displayedItems.map((item, idx) => (
+            <RevealOnScroll key={item._id} direction={idx % 2 === 0 ? 'left' : 'right'} delay={100} duration={700}>
+              <JewelleryRow
+                item={item}
+                index={idx}
+                onSelect={(selected) => setActiveItem(selected)}
+              />
+            </RevealOnScroll>
+          ))}
+        </div>
       ) : (
-        /* Louis Vuitton 4-Column Minimalist Grid (1x1 on Mobile, 4-Column on Desktop) */
+        /* 4-Column Minimalist Grid Layout */
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 lg:gap-6">
           {displayedItems.map((item, idx) => (
             <RevealOnScroll key={item._id} direction="up" delay={idx * 100} duration={700}>

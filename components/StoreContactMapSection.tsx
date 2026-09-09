@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HallmarkSeal from './HallmarkSeal'
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle, MapPin } from 'lucide-react'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -12,6 +12,10 @@ if (typeof window !== 'undefined') {
 
 export default function StoreContactMapSection() {
   const containerRef = useRef<HTMLElement | null>(null)
+
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    'Kanzar Jewels'
+  )}`
 
   const whatsappMessage = encodeURIComponent(
     'Hello Kanzar Jewels, I would like to enquire about visiting your Kolkata store.'
@@ -70,18 +74,16 @@ export default function StoreContactMapSection() {
         </span>
 
         {/* Editorial Scroll-Revealing Paragraph Headline */}
-        <h2 className="font-serif text-lg sm:text-2xl lg:text-3xl font-light text-[#2A2422] leading-relaxed max-w-3xl mx-auto">
+        <h2 className="font-serif text-sm min-[360px]:text-base min-[400px]:text-lg sm:text-2xl lg:text-3xl font-light text-[#2A2422] leading-relaxed max-w-3xl mx-auto">
           <span className="word-span inline-block">Visit Kanzar Jewels at</span>{' '}
           {/* Highlighted Location Badge */}
-          <span className="word-span inline-block text-3xl sm:text-3xl lg:text-4xl px-3 sm:px-4 py-1 sm:py-1.5 my-1 bg-[#9C6B68] text-white font-normal rounded-none shadow-xs">
-            <span className="block sm:inline">P-4B, CIT Road, Entally,</span>{' '}
-            <span className="block sm:inline">Kolkata – 700014</span>
+          <span className="word-span inline-block text-xs min-[360px]:text-sm min-[400px]:text-base sm:text-xl md:text-2xl lg:text-3xl px-2.5 sm:px-4 py-0.5 sm:py-1.5 my-1 bg-[#9C6B68] text-white font-normal rounded-none shadow-xs">
+            P-4B, CIT Road, Entally, Kolkata – 700014
           </span>{' '}
           <span className="word-span inline-block">(Near Birshul Hat). Our store is open</span>{' '}
           {/* Highlighted Hours Badge */}
-          <span className="word-span inline-block text-3xl sm:text-3xl lg:text-4xl px-3 sm:px-4 py-1 sm:py-1.5 my-1 bg-[#C99A94]/20 border-b-2 border-[#9C6B68] text-[#2A2422] font-medium">
-            <span className="block sm:inline">Monday to Saturday,</span>{' '}
-            <span className="block sm:inline">11:00 AM – 10:00 PM</span>
+          <span className="word-span inline-block text-xs min-[360px]:text-sm min-[400px]:text-base sm:text-xl md:text-2xl lg:text-3xl px-2.5 sm:px-4 py-0.5 sm:py-1.5 my-1 bg-[#C99A94]/20 border-b-2 border-[#9C6B68] text-[#2A2422] font-medium">
+            Monday to Saturday, 11:00 AM – 10:00 PM
           </span>
           <span className="word-span inline-block">.</span>
         </h2>
@@ -104,15 +106,25 @@ export default function StoreContactMapSection() {
           </a>.
         </p>
 
-        {/* Animated Instant WhatsApp Action Button Container */}
-        <div className="scroll-reveal pt-3 sm:pt-4 flex justify-center">
+        {/* Animated Instant Action Buttons Container */}
+        <div className="scroll-reveal pt-3 sm:pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a
+            href={mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 border border-[#2A2422] bg-transparent text-[#2A2422] text-[11px] sm:text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#2A2422] hover:text-white transition-all duration-300 shadow-xs w-full sm:w-auto"
+          >
+            <MapPin className="w-4 h-4 text-[#9C6B68] group-hover:text-white transition-colors shrink-0" />
+            <span>Get Directions / View Map</span>
+          </a>
+
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2.5 sm:gap-3 px-7 sm:px-10 py-3.5 sm:py-4 border border-[#9C6B68] bg-[#9C6B68] text-white text-[11px] sm:text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#C99A94] hover:border-[#C99A94] transition-all duration-300 shadow-xs"
+            className="group inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-8 py-3.5 sm:py-4 border border-[#9C6B68] bg-[#9C6B68] text-white text-[11px] sm:text-xs uppercase tracking-[0.22em] font-medium hover:bg-[#C99A94] hover:border-[#C99A94] transition-all duration-300 shadow-xs w-full sm:w-auto"
           >
-            <MessageCircle className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+            <MessageCircle className="w-4 h-4 text-white group-hover:scale-110 transition-transform shrink-0" />
             <span>Instant WhatsApp Enquiry</span>
           </a>
         </div>
