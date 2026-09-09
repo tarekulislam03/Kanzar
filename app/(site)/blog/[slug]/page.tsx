@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   }
 
-  const coverImageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/blog-bridal-guide.png'
+  const coverImageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/hero-slide-pink.jpg'
 
   return {
     title: `${post.title} | Musaddik Journal`,
@@ -66,7 +66,7 @@ export default async function BlogPostDetailPage({ params }: BlogPostPageProps) 
     notFound()
   }
 
-  const coverImageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/blog-bridal-guide.png'
+  const coverImageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/hero-slide-pink.jpg'
   const blogPostingJsonLd = getBlogPostingJsonLd(
     {
       _id: post._id,

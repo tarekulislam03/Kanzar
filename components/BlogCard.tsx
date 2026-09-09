@@ -10,7 +10,7 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
-  const imageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/blog-bridal-guide.png'
+  const imageUrl = post.coverImage ? urlFor(post.coverImage) : '/images/hero-slide-pink.jpg'
   const slugString = typeof post.slug === 'string' ? post.slug : post.slug?.current || '#'
   const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
     month: 'short',

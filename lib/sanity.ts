@@ -15,12 +15,12 @@ export const client = createClient({
 const builder = createImageUrlBuilder(client)
 
 export function urlFor(source: any) {
-  if (!source) return '/images/hero-bridal.png'
+  if (!source) return '/images/catalog-1.png'
   if (typeof source === 'string') return source
   if (source.asset?._ref || source.asset?.url) {
     return builder.image(source).url()
   }
-  return '/images/hero-bridal.png'
+  return '/images/catalog-1.png'
 }
 
 export interface JewelleryItem {
@@ -93,7 +93,7 @@ export const FALLBACK_JEWELLERY_ITEMS: JewelleryItem[] = [
     name: 'Filigree Antique Gold Bangles (Set of 4)',
     category: 'bangles',
     material: '22K Yellow Gold Fine Wirework',
-    images: ['/images/bangles-filigree.png'],
+    images: ['/images/catalog-1.png'],
     shortDescription: 'Delicate gold filigree craftsmanship woven into intricate mesh bangles, embodying generations of artisan heritage.',
     priceDisplay: 'Price On Request',
     karat: '22K Gold',
@@ -103,7 +103,7 @@ export const FALLBACK_JEWELLERY_ITEMS: JewelleryItem[] = [
     name: 'Royal Meenakari Royal Kada',
     category: 'bangles',
     material: '22K Gold with Red & Green Enamel Work',
-    images: ['/images/kada-meenakari.png'],
+    images: ['/images/catalog-2.png'],
     shortDescription: 'Bold wrist kada featuring traditional Jaipuri Meenakari enamel art on the inner side and carved elephant head clasps.',
     priceDisplay: 'Price On Request',
     karat: '22K Gold',
@@ -113,7 +113,7 @@ export const FALLBACK_JEWELLERY_ITEMS: JewelleryItem[] = [
     name: 'Antique Chandbali Jhumka Earrings',
     category: 'earrings',
     material: '22K Gold, Polki Diamonds & Pearl Droplets',
-    images: ['/images/earrings-jhumka.png'],
+    images: ['/images/catalog-3.png'],
     shortDescription: 'Classic moon-shaped chandbali jhumkas layered with delicate seed pearls and sparkling champagne diamond polkis.',
     priceDisplay: 'Price On Request',
     karat: '22K Gold',
@@ -123,7 +123,7 @@ export const FALLBACK_JEWELLERY_ITEMS: JewelleryItem[] = [
     name: 'Solitaire Emerald & Diamond Studs',
     category: 'earrings',
     material: '18K White Gold, Natural Zambian Emeralds',
-    images: ['/images/earrings-stud.png'],
+    images: ['/images/catalog-4.png'],
     shortDescription: 'Elegantly framed royal green emerald studs surrounded by a halo of brilliant round-cut micro diamonds.',
     priceDisplay: 'Price On Request',
     karat: '18K White Gold',
@@ -133,7 +133,7 @@ export const FALLBACK_JEWELLERY_ITEMS: JewelleryItem[] = [
     name: 'Royal Filigree Solitaire Ring',
     category: 'rings',
     material: '18K Rose Gold & Certified VVS Diamond',
-    images: ['/images/ring-filigree.png'],
+    images: ['/images/catalog-1.png'],
     shortDescription: 'A statement solitaire ring with vintage filigree side galleries, capturing light from every angle with supreme brilliance.',
     priceDisplay: 'Price On Request',
     karat: '18K Gold',
@@ -143,7 +143,7 @@ export const FALLBACK_JEWELLERY_ITEMS: JewelleryItem[] = [
     name: 'Traditional Heritage Floral Band Ring',
     category: 'rings',
     material: '22K Antique Yellow Gold',
-    images: ['/images/ring-filigree.png'],
+    images: ['/images/catalog-2.png'],
     shortDescription: 'Heavy solid gold band hand-engraved with fine gold filigree wirework and traditional floral patterns.',
     priceDisplay: 'Price On Request',
     karat: '22K Gold',
@@ -156,7 +156,7 @@ export const FALLBACK_BLOG_POSTS: BlogPost[] = [
     title: 'The Ultimate Guide to Selecting Your Dream Bridal Jewellery',
     slug: 'ultimate-bridal-jewellery-guide',
     excerpt: 'Discover how to pair heritage necklines, metal tones, and heirloom gems to craft a cohesive, spellbinding bridal ensemble.',
-    coverImage: '/images/blog-bridal-guide.png',
+    coverImage: '/images/hero-slide-pink.jpg',
     publishedAt: '2026-08-15T10:00:00.000Z',
     author: 'Musaddik Master Artisans',
     readTime: '6 min read',
@@ -195,7 +195,7 @@ export const FALLBACK_BLOG_POSTS: BlogPost[] = [
     title: 'Caring for 22K Pure Gold & Gemstones: Preserving Eternal Lustre',
     slug: 'caring-for-22k-gold-and-gemstones',
     excerpt: 'Essential advice from our master goldsmiths on cleaning, storing, and protecting high-karat gold and delicate polki stones.',
-    coverImage: '/images/blog-gold-care.png',
+    coverImage: '/images/hero-slide-pink-2.jpg',
     publishedAt: '2026-08-10T14:30:00.000Z',
     author: 'Musaddik Vault Team',
     readTime: '4 min read',
@@ -225,7 +225,7 @@ export const FALLBACK_BLOG_POSTS: BlogPost[] = [
     title: 'The Royal History of Polki & Kundan: From Mughal Courts to Modern Brides',
     slug: 'royal-history-of-polki-and-kundan',
     excerpt: 'Trace the 500-year evolution of uncut diamonds set in 24K gold foil and how contemporary artisans preserve royal court techniques.',
-    coverImage: '/images/bridal-polki-set.png',
+    coverImage: '/images/hero-slide-pink-3.jpg',
     publishedAt: '2026-08-05T11:00:00.000Z',
     author: 'Heritage Atelier Curators',
     readTime: '5 min read',

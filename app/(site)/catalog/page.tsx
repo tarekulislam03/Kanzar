@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/hero-bridal.png',
+        url: '/images/catalog-1.png',
         width: 1200,
         height: 630,
         alt: 'Kanzar Catalog',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'Jewellery Catalog | Musaddik Jewellery',
     description:
       'Browse our complete catalog of handcrafted 22K gold neckpieces, uncut Kundan chokers, certified Polki bridal sets, bangles, and rings.',
-    images: ['/images/hero-bridal.png'],
+    images: ['/images/catalog-1.png'],
   },
 }
 

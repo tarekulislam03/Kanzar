@@ -48,7 +48,7 @@ export default function JewelleryModal({ item, onClose }: JewelleryModalProps) {
 
   if (!item || !mounted) return null
 
-  const imageList = item.images && item.images.length > 0 ? item.images : ['/images/hero-bridal.png']
+  const imageList = item.images && item.images.length > 0 ? item.images : ['/images/catalog-1.png']
   const activeImageUrl = urlFor(imageList[activeImageIndex])
 
   const whatsappMessage = encodeURIComponent(

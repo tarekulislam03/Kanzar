@@ -13,7 +13,7 @@ interface JewelleryCardProps {
 
 export default function JewelleryCard({ item, onSelect }: JewelleryCardProps) {
   const [isLiked, setIsLiked] = useState(false)
-  const imageUrl = item.images && item.images.length > 0 ? urlFor(item.images[0]) : '/images/hero-bridal.png'
+  const imageUrl = item.images && item.images.length > 0 ? urlFor(item.images[0]) : '/images/catalog-1.png'
 
   return (
     <div

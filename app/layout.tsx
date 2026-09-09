@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/hero-bridal.png',
+        url: '/images/catalog-1.png',
         width: 1200,
         height: 630,
         alt: 'Musaddik Jewellery Heritage Collection',
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ['/images/hero-bridal.png'],
+    images: ['/images/catalog-1.png'],
   },
 }
 

@@ -37,7 +37,7 @@ export function getJewelryStoreJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     logo: getAbsoluteUrl('/images/logo-kanzar.png'),
-    image: getAbsoluteUrl('/images/hero-bridal.png'),
+    image: getAbsoluteUrl('/images/hero-slide-pink.jpg'),
     description: DEFAULT_DESCRIPTION,
     telephone: STORE_TELEPHONE,
     email: STORE_EMAIL,

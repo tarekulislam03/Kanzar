@@ -160,7 +160,7 @@ export default function CraftsmanshipSection() {
         className="absolute inset-0 z-0 opacity-[0.20] pointer-events-none transform-gpu will-change-transform scale-100"
       >
         <Image
-          src="/images/modest-royal-bride.png"
+          src="/images/hero-slide-pink.jpg"
           alt="Imperial Kundan Heritage Model"
           fill
           sizes="100vw"

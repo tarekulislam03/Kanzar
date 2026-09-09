@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/blog-bridal-guide.png',
+        url: '/images/hero-slide-pink.jpg',
         width: 1200,
         height: 630,
         alt: 'Musaddik Atelier Journal',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'Atelier Journal | Musaddik Gold Care & Guides',
     description:
       'Practical advice on reading gold hallmarks, caring for 22K gold, and choosing bridal jewellery from Musaddik master goldsmiths.',
-    images: ['/images/blog-bridal-guide.png'],
+    images: ['/images/hero-slide-pink.jpg'],
   },
 }
 

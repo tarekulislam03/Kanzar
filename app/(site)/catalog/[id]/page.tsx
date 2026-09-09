@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: ItemPageProps): Promise<Metad
     }
   }
 
-  const imageList = item.images && item.images.length > 0 ? item.images : ['/images/hero-bridal.png']
+  const imageList = item.images && item.images.length > 0 ? item.images : ['/images/catalog-1.png']
   const primaryImageUrl = urlFor(imageList[0])
 
   return {
@@ -64,7 +64,7 @@ export default async function JewelleryItemDetailPage({ params }: ItemPageProps)
     notFound()
   }
 
-  const imageList = item.images && item.images.length > 0 ? item.images : ['/images/hero-bridal.png']
+  const imageList = item.images && item.images.length > 0 ? item.images : ['/images/catalog-1.png']
   const primaryImageUrl = urlFor(imageList[0])
   const productJsonLd = getProductJsonLd(item, primaryImageUrl)
 

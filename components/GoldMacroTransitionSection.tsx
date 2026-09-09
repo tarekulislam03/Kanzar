@@ -24,7 +24,7 @@ const PIECES: Piece[] = [
     tag: '01 / HERITAGE KUNDAN',
     title: 'Imperial Kundan Ensemble',
     description: 'Hand-burnished 22K gold foil settings paired with uncut emerald cabochons and pearls.',
-    image: '/images/necklace-kundan-set.png',
+    image: '/images/catalog-1.png',
     alt: 'KANZAR 22K Imperial Kundan Necklace',
   },
   {
@@ -32,7 +32,7 @@ const PIECES: Piece[] = [
     tag: '02 / ROYAL EARRINGS',
     title: 'Chandbali Jhumka Masterpiece',
     description: 'Traditional moon-shaped gold architecture layered with delicate seed pearl droplets.',
-    image: '/images/earrings-jhumka.png',
+    image: '/images/catalog-2.png',
     alt: 'KANZAR 22K Antique Chandbali Jhumka Earrings',
   },
   {
@@ -40,7 +40,7 @@ const PIECES: Piece[] = [
     tag: '03 / HANDCRAFTED BANGLES',
     title: 'Filigree Artisanal Bangles',
     description: 'Generations of fine gold filigree wirework woven into certified 22K solid gold.',
-    image: '/images/bangles-filigree.png',
+    image: '/images/catalog-3.png',
     alt: 'KANZAR 22K Filigree Gold Bangles',
   },
 ]
