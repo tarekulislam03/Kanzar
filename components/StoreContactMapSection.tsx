@@ -14,9 +14,11 @@ export default function StoreContactMapSection() {
   const containerRef = useRef<HTMLElement | null>(null)
 
   const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    'Kanzar Jewels'
+    'Kanzar Jewels P-4B CIT Road Entally Kolkata 700014'
   )}`
 
+  const embedMapUrl =
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7369.41507782921!2d88.37444260412141!3d22.55262583211148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027742d79ed949%3A0xfd331fd2a8edf15a!2sKanzar%20Jewels!5e0!3m2!1sen!2sin!4v1788958502389!5m2!1sen!2sin'
   const whatsappMessage = encodeURIComponent(
     'Hello Kanzar Jewels, I would like to enquire about visiting your Kolkata store.'
   )
@@ -73,7 +75,34 @@ export default function StoreContactMapSection() {
           OUR ATELIER & LOCATION
         </span>
 
+        {/* Small Size Interactive Embedded Map */}
+        <div className="scroll-reveal max-w-2xl mx-auto w-full rounded-xl overflow-hidden border border-[#DEDAD2] shadow-sm bg-[#FAF6F3] relative group hover:shadow-md transition-all duration-300">
+          <div className="w-full h-52 sm:h-64 relative">
+            <iframe
+              src={embedMapUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Kanzar Jewels Store Location Map"
+              className="w-full h-full grayscale-[15%] contrast-[1.02] hover:grayscale-0 transition-all duration-500"
+            />
+            <a
+              href={mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-2.5 right-2.5 bg-[#2A2422]/90 hover:bg-[#9C6B68] text-white text-[10px] sm:text-xs tracking-wider uppercase px-2.5 py-1.5 rounded-md font-medium shadow-sm transition-all duration-200 flex items-center gap-1.5 backdrop-blur-xs"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#C99A94]" />
+              <span>Open Google Maps</span>
+            </a>
+          </div>
+        </div>
+
         {/* Editorial Scroll-Revealing Paragraph Headline */}
+
         <h2 className="font-serif text-sm min-[360px]:text-base min-[400px]:text-lg sm:text-2xl lg:text-3xl font-light text-[#2A2422] leading-relaxed max-w-3xl mx-auto">
           <span className="word-span inline-block">Visit Kanzar Jewels at</span>{' '}
           {/* Highlighted Location Badge */}
