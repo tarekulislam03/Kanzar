@@ -177,32 +177,32 @@ export default function Navbar() {
         ================================================== */}
         <div
           className={`
-    overflow-hidden
-    transition-all
-    duration-300
-    bg-[#7A4F5B] 
-    ${scrolled
+            overflow-hidden
+            transition-all
+            duration-300
+            bg-[#7A4F5B] 
+            ${scrolled
               ? 'max-h-0 opacity-0'
-              : 'max-h-10 opacity-100'
+              : 'max-h-12 opacity-100'
             }
-  `}
+          `}
         >
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12 py-2 flex items-center justify-center gap-2 sm:gap-4 text-[7.5px] sm:text-[12px] uppercase tracking-[0.18em] font-bold text-center text-[#FAF6F3]">
+          <div className="max-w-[1400px] mx-auto px-2 sm:px-8 lg:px-12 py-2 flex items-center justify-center gap-1.5 sm:gap-3 text-[10px] min-[380px]:text-[11px] sm:text-[12px] uppercase tracking-normal sm:tracking-[0.15em] font-bold text-center text-[#FAF6F3] whitespace-nowrap">
 
-            {/* Discount Icon Added Here */}
-            <Tag className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            {/* Discount Icon */}
+            <Tag className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 text-white" />
 
-            <span>
-              Enjoy 4.99% Flat Making Charges On 22 Karat
+            <span className="truncate sm:overflow-visible">
+              Enjoy <span className="bg-white bg-scratchy text-[#7A4F5B] px-1.5 py-0.5 rounded-sm font-black shadow-xs tracking-normal inline-block align-baseline mx-0.5">4.99%</span> Flat Making Charges On 22 Karat
             </span>
 
-            {/* Underline and hover effect added to the link */}
-            <a
-              href=""
-              className="underline underline-offset-4 decoration-1 hover:text-white transition-colors"
+            {/* Link to catalog collection page */}
+            <Link
+              href="/catalog"
+              className="underline underline-offset-4 decoration-1 text-white hover:text-white/80 transition-colors shrink-0 font-extrabold"
             >
               Shop Now
-            </a>
+            </Link>
 
           </div>
         </div>
@@ -296,16 +296,18 @@ export default function Navbar() {
                 className="flex flex-col items-center cursor-pointer group text-center whitespace-nowrap"
               >
                 <img
-                  src="/logo.png"
+                  src="/logo-v3.png"
                   alt="Kanzar"
                   className="
-                    h-8
+                    h-12
                     sm:h-17
                     w-auto
                     object-contain
-                    transition-transform
+                    transition-all
                     duration-300
+                    drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)]
                     group-hover:scale-105
+                    group-hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.2)]
                   "
                 />
               </Link>
@@ -321,8 +323,10 @@ export default function Navbar() {
               {/* Desktop Call */}
 
               <a
-                href="tel:+919875338183"
-                title="Call Us: +91 98753 38183"
+                href="https://wa.me/919875338183"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="WhatsApp Us: +91 98753 38183"
                 className={`
                   hidden
                   sm:flex
@@ -348,8 +352,10 @@ export default function Navbar() {
               {/* Mobile Call */}
 
               <a
-                href="tel:+919875338183"
-                aria-label="Call Now"
+                href="https://wa.me/917003467398"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp Us"
                 className={`
                   sm:hidden
                   text-[#2A2422]
@@ -415,6 +421,11 @@ export default function Navbar() {
         className={`
           fixed
           inset-0
+          h-screen
+          h-[100dvh]
+          min-h-[100dvh]
+          max-h-[100dvh]
+          w-screen
           z-[60]
           transition-all
           duration-500
@@ -456,7 +467,10 @@ export default function Navbar() {
             md:w-1/2
             lg:w-[48vw]
             xl:w-[42vw]
-            h-full
+            h-screen
+            h-[100dvh]
+            min-h-[100dvh]
+            max-h-[100dvh]
             bg-[#FAF6F3]
             border-r
             border-[#F3E2DD]
@@ -472,6 +486,7 @@ export default function Navbar() {
             duration-500
             ease-[cubic-bezier(0.77,0,0.175,1)]
             overflow-y-auto
+            overscroll-contain
             transform
             ${menuOpen
               ? 'translate-x-0'
@@ -570,734 +585,112 @@ export default function Navbar() {
             </div>
 
             {/* ==================================================
-                MOBILE NAVIGATION
+                MOBILE NAVIGATION (FOOTER MATCHING LINKS)
             ================================================== */}
 
             <nav className="space-y-6 sm:space-y-7">
 
-              {/* COLLECTIONS */}
+              {/* ATELIER SECTION */}
+              <div className="space-y-3 border-b border-[#F3E2DD] pb-5">
+                <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
+                  ATELIER
+                </span>
+                <ul className="space-y-3">
+                  <li>
+                    <Link
+                      href="/"
+                      onClick={() => setMenuOpen(false)}
+                      className="font-serif text-lg sm:text-xl text-[#2A2422] hover:text-[#9C6B68] transition-colors font-medium flex items-center justify-between group"
+                    >
+                      <span>Home</span>
+                      <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/blog"
+                      onClick={() => setMenuOpen(false)}
+                      className="font-serif text-lg sm:text-xl text-[#2A2422] hover:text-[#9C6B68] transition-colors font-medium flex items-center justify-between group"
+                    >
+                      <span>Atelier Journal</span>
+                      <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/visit-us"
+                      onClick={() => setMenuOpen(false)}
+                      className="font-serif text-lg sm:text-xl text-[#2A2422] hover:text-[#9C6B68] transition-colors font-medium flex items-center justify-between group"
+                    >
+                      <span>Visit Store</span>
+                      <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
-              <div
-                className={`
-                  group
-                  border-b
-                  border-[#F3E2DD]
-                  pb-5
-                  transition-all
-                  duration-500
-                  delay-150
-                  transform
-                  ${menuOpen
-                    ? 'opacity-100 translate-x-0'
-                    : 'opacity-0 -translate-x-6'
-                  }
-                `}
-              >
+              {/* ESSENTIAL PAGES SECTION */}
+              <div className="space-y-3 border-b border-[#F3E2DD] pb-5">
+                <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
+                  ESSENTIAL PAGES
+                </span>
+                <ul className="space-y-2.5">
+                  <li>
+                    <Link
+                      href="/terms-and-conditions"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-xs sm:text-sm text-[#2A2422]/80 hover:text-[#9C6B68] transition-colors font-light block"
+                    >
+                      Terms & Conditions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/legal-info"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-xs sm:text-sm text-[#2A2422]/80 hover:text-[#9C6B68] transition-colors font-light block"
+                    >
+                      Legal Info
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/cookie-policy"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-xs sm:text-sm text-[#2A2422]/80 hover:text-[#9C6B68] transition-colors font-light block"
+                    >
+                      Cookie Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/privacy-policy"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-xs sm:text-sm text-[#2A2422]/80 hover:text-[#9C6B68] transition-colors font-light block"
+                    >
+                      Privacy Policy
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
-                <button
-                  onClick={() =>
-                    handleNavClick('collections')
-                  }
-                  className="
-                    w-full
-                    flex
-                    items-center
-                    justify-between
-                    text-left
-                    group
-                    cursor-pointer
-                  "
-                >
-
-                  <div className="
-                    flex
-                    items-center
-                    gap-3
-                  ">
-
-                    <span className="
-                      w-1.5
-                      h-1.5
-                      rounded-full
-                      bg-[#C99A94]
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-300
-                    " />
-
-                    <span className="
-                      font-serif
-                      text-xl
-                      sm:text-2xl
-                      text-[#2A2422]
-                      group-hover:text-[#9C6B68]
-                      group-hover:translate-x-1
-                      transition-all
-                      duration-300
-                      font-medium
-                    ">
-                      High Jewellery Collections
-                    </span>
-
-                  </div>
-
-                  <ChevronRight className="
-                    w-5
-                    h-5
-                    text-[#9C6B68]
-                    group-hover:translate-x-2
-                    transition-transform
-                    duration-300
-                  " />
-
-                </button>
-
-                <div className="
-                  mt-3
-                  space-y-2.5
-                  pl-6
-                  border-l-2
-                  border-[#C99A94]/40
-                ">
-
-                  <button
-                    onClick={() =>
-                      handleNavClick('collections')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    Royal Kundan & Antique Polki
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleNavClick('collections')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    Bridal Gold Trousseau Sets
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleNavClick('collections')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    Temple Heritage Masterpieces
-                  </button>
-
+              {/* ADDRESS SECTION */}
+              <div className="space-y-2">
+                <span className="block text-[11px] uppercase tracking-[0.2em] text-[#9C6B68] font-semibold">
+                  ADDRESS & STORE
+                </span>
+                <div className="text-xs text-[#2A2422]/75 leading-relaxed font-light space-y-1">
+                  <div>P-4B, CIT Road, Paddapukur, Entally, Near Birshul Hat</div>
+                  <div>Kolkata, West Bengal – 700014</div>
+                  <div>Mon – Sat: 9:00 AM – 9:00 PM</div>
+                  <div className="pt-1 text-[#2A2422] font-medium">033-4535-6632 / 9875338183</div>
                 </div>
-              </div>
-
-              {/* CATALOG */}
-
-              <div
-                className={`
-                  group
-                  border-b
-                  border-[#F3E2DD]
-                  pb-5
-                  transition-all
-                  duration-500
-                  delay-200
-                  transform
-                  ${menuOpen
-                    ? 'opacity-100 translate-x-0'
-                    : 'opacity-0 -translate-x-6'
-                  }
-                `}
-              >
-
-                <button
-                  onClick={() => navigateCatalog()}
-                  className="
-                    w-full
-                    flex
-                    items-center
-                    justify-between
-                    text-left
-                    group
-                    cursor-pointer
-                  "
-                >
-
-                  <div className="
-                    flex
-                    items-center
-                    gap-3
-                  ">
-
-                    <span className="
-                      w-1.5
-                      h-1.5
-                      rounded-full
-                      bg-[#C99A94]
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-300
-                    " />
-
-                    <span className="
-                      font-serif
-                      text-xl
-                      sm:text-2xl
-                      text-[#2A2422]
-                      group-hover:text-[#9C6B68]
-                      group-hover:translate-x-1
-                      transition-all
-                      duration-300
-                      font-medium
-                    ">
-                      Explore Catalog
-                    </span>
-
-                  </div>
-
-                  <ChevronRight className="
-                    w-5
-                    h-5
-                    text-[#9C6B68]
-                    group-hover:translate-x-2
-                    transition-transform
-                    duration-300
-                  " />
-
-                </button>
-
-                <div className="
-                  mt-3
-                  space-y-2.5
-                  pl-6
-                  border-l-2
-                  border-[#C99A94]/40
-                ">
-
-                  <button
-                    onClick={() =>
-                      navigateCatalog('Necklaces')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    Chokers & Statement Necklaces
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      navigateCatalog('Bangles')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    Crafted Gold Bangles & Kadas
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      navigateCatalog('Earrings')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    Heritage Jhumkas & Chandbalis
-                  </button>
-
-                </div>
-              </div>
-
-              {/* HERITAGE */}
-
-              <div
-                className={`
-                  group
-                  border-b
-                  border-[#F3E2DD]
-                  pb-5
-                  transition-all
-                  duration-500
-                  delay-[250ms]
-                  transform
-                  ${menuOpen
-                    ? 'opacity-100 translate-x-0'
-                    : 'opacity-0 -translate-x-6'
-                  }
-                `}
-              >
-
-                <button
-                  onClick={() =>
-                    handleNavClick('heritage')
-                  }
-                  className="
-                    w-full
-                    flex
-                    items-center
-                    justify-between
-                    text-left
-                    group
-                    cursor-pointer
-                  "
-                >
-
-                  <div className="
-                    flex
-                    items-center
-                    gap-3
-                  ">
-
-                    <span className="
-                      w-1.5
-                      h-1.5
-                      rounded-full
-                      bg-[#C99A94]
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-300
-                    " />
-
-                    <span className="
-                      font-serif
-                      text-xl
-                      sm:text-2xl
-                      text-[#2A2422]
-                      group-hover:text-[#9C6B68]
-                      group-hover:translate-x-1
-                      transition-all
-                      duration-300
-                      font-medium
-                    ">
-                      5 Generations Craftsmanship
-                    </span>
-
-                  </div>
-
-                  <ChevronRight className="
-                    w-5
-                    h-5
-                    text-[#9C6B68]
-                    group-hover:translate-x-2
-                    transition-transform
-                    duration-300
-                  " />
-
-                </button>
-
-                <div className="
-                  mt-3
-                  space-y-2.5
-                  pl-6
-                  border-l-2
-                  border-[#C99A94]/40
-                ">
-
-                  <button
-                    onClick={() =>
-                      handleNavClick('heritage')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    Legacy & Atelier Artisans
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleNavClick('heritage')
-                    }
-                    className="
-                      block
-                      text-xs
-                      sm:text-sm
-                      text-[#2A2422]/75
-                      hover:text-[#9C6B68]
-                      hover:translate-x-1
-                      transition-all
-                      duration-200
-                      font-light
-                    "
-                  >
-                    BIS Hallmark 916 Guarantee
-                  </button>
-
-                </div>
-              </div>
-
-              {/* JOURNAL */}
-
-              <div
-                className={`
-                  group
-                  border-b
-                  border-[#F3E2DD]
-                  pb-5
-                  transition-all
-                  duration-500
-                  delay-300
-                  transform
-                  ${menuOpen
-                    ? 'opacity-100 translate-x-0'
-                    : 'opacity-0 -translate-x-6'
-                  }
-                `}
-              >
-
-                <button
-                  onClick={() => navigateBlog()}
-                  className="
-                    w-full
-                    flex
-                    items-center
-                    justify-between
-                    text-left
-                    group
-                    cursor-pointer
-                  "
-                >
-
-                  <div className="
-                    flex
-                    items-center
-                    gap-3
-                  ">
-
-                    <span className="
-                      w-1.5
-                      h-1.5
-                      rounded-full
-                      bg-[#C99A94]
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-300
-                    " />
-
-                    <span className="
-                      font-serif
-                      text-xl
-                      sm:text-2xl
-                      text-[#2A2422]
-                      group-hover:text-[#9C6B68]
-                      group-hover:translate-x-1
-                      transition-all
-                      duration-300
-                      font-medium
-                    ">
-                      Atelier Journal
-                    </span>
-
-                  </div>
-
-                  <ChevronRight className="
-                    w-5
-                    h-5
-                    text-[#9C6B68]
-                    group-hover:translate-x-2
-                    transition-transform
-                    duration-300
-                  " />
-
-                </button>
-              </div>
-
-              {/* VISIT STORE */}
-
-              <div
-                className={`
-                  group
-                  transition-all
-                  duration-500
-                  delay-[350ms]
-                  transform
-                  ${menuOpen
-                    ? 'opacity-100 translate-x-0'
-                    : 'opacity-0 -translate-x-6'
-                  }
-                `}
-              >
-
-                <button
-                  onClick={() =>
-                    handleNavClick('visit')
-                  }
-                  className="
-                    w-full
-                    flex
-                    items-center
-                    justify-between
-                    text-left
-                    group
-                    cursor-pointer
-                  "
-                >
-
-                  <div className="
-                    flex
-                    items-center
-                    gap-3
-                  ">
-
-                    <span className="
-                      w-1.5
-                      h-1.5
-                      rounded-full
-                      bg-[#C99A94]
-                      opacity-0
-                      group-hover:opacity-100
-                      transition-opacity
-                      duration-300
-                    " />
-
-                    <span className="
-                      font-serif
-                      text-xl
-                      sm:text-2xl
-                      text-[#2A2422]
-                      group-hover:text-[#9C6B68]
-                      group-hover:translate-x-1
-                      transition-all
-                      duration-300
-                      font-medium
-                    ">
-                      Visit Flagship Store
-                    </span>
-
-                  </div>
-
-                  <ChevronRight className="
-                    w-5
-                    h-5
-                    text-[#9C6B68]
-                    group-hover:translate-x-2
-                    transition-transform
-                    duration-300
-                  " />
-
-                </button>
               </div>
 
             </nav>
           </div>
 
-          {/* ==================================================
-              DRAWER FOOTER
-          ================================================== */}
 
-          <div
-            className={`
-              pt-8
-              border-t
-              border-[#F3E2DD]
-              mt-8
-              space-y-4
-              transition-all
-              duration-500
-              delay-[400ms]
-              transform
-              ${menuOpen
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-4'
-              }
-            `}
-          >
-
-            {/* Appointment */}
-
-            <button
-              onClick={() => {
-                setMenuOpen(false)
-                setIsAppointmentOpen(true)
-              }}
-              className="
-                group
-                relative
-                w-full
-                py-4
-                bg-[#9C6B68]
-                text-[#FAF6F3]
-                hover:bg-[#C99A94]
-                text-xs
-                font-semibold
-                uppercase
-                tracking-[0.2em]
-                flex
-                items-center
-                justify-center
-                gap-3
-                transition-all
-                duration-300
-                shadow-lg
-                hover:shadow-xl
-                cursor-pointer
-                overflow-hidden
-              "
-            >
-
-              <span className="
-                absolute
-                inset-0
-                bg-gradient-to-r
-                from-transparent
-                via-white/10
-                to-transparent
-                transform
-                -translate-x-full
-                group-hover:translate-x-full
-                transition-transform
-                duration-1000
-              " />
-
-              <Calendar className="
-                w-4
-                h-4
-                text-[#B08D57]
-                group-hover:text-white
-                transition-colors
-              " />
-
-              <span>
-                Book Atelier Appointment
-              </span>
-
-              <Sparkles className="
-                w-3.5
-                h-3.5
-                text-[#B08D57]
-                opacity-80
-                group-hover:opacity-100
-                group-hover:rotate-12
-                transition-all
-              " />
-
-            </button>
-
-            {/* Concierge */}
-
-            <a
-              href="tel:+919875338183"
-              className="
-                w-full
-                py-3
-                border
-                border-[#2A2422]/25
-                text-[#2A2422]
-                hover:border-[#9C6B68]
-                hover:text-[#9C6B68]
-                text-xs
-                uppercase
-                tracking-[0.18em]
-                font-light
-                flex
-                items-center
-                justify-center
-                gap-2
-                transition-colors
-                cursor-pointer
-              "
-            >
-
-              <Phone className="w-3.5 h-3.5" />
-
-              <span>
-                Call Concierge: +91 98753 38183
-              </span>
-
-            </a>
-
-            {/* Certifications */}
-
-            <div className="
-              flex
-              items-center
-              justify-between
-              text-[10px]
-              uppercase
-              tracking-[0.22em]
-              text-[#2A2422]/60
-              pt-2
-              font-light
-              border-t
-              border-[#F3E2DD]
-            ">
-              <span>
-                Certified 22K Gold
-              </span>
-
-              <span>
-                BIS Hallmark 916
-              </span>
-            </div>
-
-          </div>
         </aside>
       </div>
 

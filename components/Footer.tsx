@@ -11,11 +11,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-10 border-b border-[#DEDAD2]">
           {/* Brand Column */}
           <div className="space-y-4 md:col-span-1">
-            <Link href="/" className="flex items-center gap-3">
-              <img src="/logo.png" alt="Kanzar" className="h-18 w-auto object-contain" />
+            <Link href="/" className="flex items-center gap-3 group">
+              <img
+                src="/logo-v3.png"
+                alt="Kanzar"
+                className="h-18 w-auto object-contain transition-all duration-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.12)] group-hover:drop-shadow-[0_2px_6px_rgba(0,0,0,0.2)]"
+              />
             </Link>
             <p className="text-xs text-[#1C1A17]/70 leading-relaxed font-light">
-              Enjoy 4.99% Flat Making Charges On 22 Karat
+              Enjoy <span className="bg-white bg-scratchy text-[#2A2422] px-1.5 py-0.5 rounded-sm font-bold shadow-xs border border-[#DEDAD2]">4.99%</span> Flat Making Charges On 22 Karat
             </p>
           </div>
 

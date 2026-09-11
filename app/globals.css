@@ -30,6 +30,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .bg-scratchy {
+    background-image: url('/images/white-scratchy-bg.png');
+    background-repeat: repeat;
+    background-size: 512px 512px;
+  }
+
   h1,
   h2,
   h3,

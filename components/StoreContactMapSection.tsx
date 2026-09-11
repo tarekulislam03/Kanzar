@@ -76,7 +76,7 @@ export default function StoreContactMapSection() {
         </span>
 
         {/* Small Size Interactive Embedded Map */}
-        <div className="scroll-reveal max-w-2xl mx-auto w-full rounded-xl overflow-hidden border border-[#DEDAD2] shadow-sm bg-[#FAF6F3] relative group hover:shadow-md transition-all duration-300">
+        <div className="scroll-reveal max-w-2xl mx-auto w-full rounded-none overflow-hidden border border-[#DEDAD2] shadow-sm bg-[#FAF6F3] relative group hover:shadow-md transition-all duration-300">
           <div className="w-full h-52 sm:h-64 relative">
             <iframe
               src={embedMapUrl}
@@ -89,15 +89,6 @@ export default function StoreContactMapSection() {
               title="Kanzar Jewels Store Location Map"
               className="w-full h-full grayscale-[15%] contrast-[1.02] hover:grayscale-0 transition-all duration-500"
             />
-            <a
-              href={mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute bottom-2.5 right-2.5 bg-[#2A2422]/90 hover:bg-[#9C6B68] text-white text-[10px] sm:text-xs tracking-wider uppercase px-2.5 py-1.5 rounded-md font-medium shadow-sm transition-all duration-200 flex items-center gap-1.5 backdrop-blur-xs"
-            >
-              <MapPin className="w-3.5 h-3.5 text-[#C99A94]" />
-              <span>Open Google Maps</span>
-            </a>
           </div>
         </div>
 

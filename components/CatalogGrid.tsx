@@ -60,8 +60,8 @@ export default function CatalogGrid({
           ))}
         </div>
       ) : (
-        /* 4-Column Minimalist Grid Layout */
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 lg:gap-6">
+        /* 4-Column Grid Layout (2-Column on Mobile) */
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 lg:gap-6">
           {displayedItems.map((item, idx) => (
             <RevealOnScroll key={item._id} direction="up" delay={idx * 100} duration={700}>
               <JewelleryCard
