@@ -73,6 +73,11 @@ export default function Footer() {
                   Visit Store
                 </Link>
               </li>
+              <li>
+                <Link href="/invitation" className="hover:text-[#9C6B68] transition-colors font-medium text-[#9C6B68]">
+                  Grand Opening Invitation
+                </Link>
+              </li>
             </ul>
           </div>
 

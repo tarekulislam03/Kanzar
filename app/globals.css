@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-serif: var(--font-heading), Georgia, serif;
+  --font-script: 'Alex Brush', cursive;
+  --font-cinzel: 'Cinzel', Georgia, serif;
 }
 
 html,
@@ -149,4 +152,75 @@ select:focus-visible {
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+}
+
+.font-script {
+  font-family: 'Alex Brush', cursive;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', system-ui, sans-serif;
+}
+
+@keyframes ribbonFloatLeft {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(6px, -10px, 0) rotate(-2deg) scale(1.02);
+  }
+}
+
+@keyframes ribbonFloatRight {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(-6px, -12px, 0) rotate(2deg) scale(1.03);
+  }
+}
+
+.animate-ribbon-left {
+  animation: ribbonFloatLeft 5s ease-in-out infinite;
+}
+
+.animate-ribbon-right {
+  animation: ribbonFloatRight 5.8s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(90deg, #F9F1DC 0%, #D4AF37 25%, #FFFDF5 50%, #B8860B 75%, #F9F1DC 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShimmer 4s linear infinite;
+}
+
+@keyframes luxuryEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-luxury-enter {
+  animation: luxuryEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

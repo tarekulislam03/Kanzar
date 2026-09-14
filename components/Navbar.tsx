@@ -626,6 +626,16 @@ export default function Navbar() {
                       <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      href="/invitation"
+                      onClick={() => setMenuOpen(false)}
+                      className="font-serif text-lg sm:text-xl text-[#9C6B68] hover:text-[#2A2422] transition-colors font-medium flex items-center justify-between group"
+                    >
+                      <span>Grand Opening Invitation</span>
+                      <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
