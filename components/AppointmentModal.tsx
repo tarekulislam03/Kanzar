@@ -33,7 +33,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
   const whatsappMessage = encodeURIComponent(
     `Hello, I would like to book a store appointment for ${formData.name || 'a visit'}. Phone: ${formData.phone}, Preferred Date: ${formData.date}.`
   )
-  const whatsappUrl = `https://wa.me/918101402916?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm transition-all overflow-y-auto">

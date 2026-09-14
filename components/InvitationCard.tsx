@@ -74,7 +74,7 @@ export default function InvitationCard() {
   const whatsappMessage = encodeURIComponent(
     'Hello Kanzar Jewels, I would like to RSVP for the Grand Opening ceremony on 30th September.'
   )
-  const whatsappUrl = `https://wa.me/919875338183?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
 
   const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
     'Grand Opening — Kanzar Jewels Kolkata'

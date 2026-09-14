@@ -98,7 +98,7 @@ export default function CinematicInvitation() {
   const whatsappMessage = encodeURIComponent(
     'Hello Kanzar Jewels, I received your Grand Opening invitation and would love to RSVP for the inaugural celebration on 30th September 2026.'
   )
-  const whatsappUrl = `https://wa.me/919875338183?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
 
   const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
     'Grand Opening — Kanzar Jewels Kolkata'

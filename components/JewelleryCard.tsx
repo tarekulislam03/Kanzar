@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { Heart } from 'lucide-react'
 import { JewelleryItem, urlFor } from '../lib/sanity'
+import { shareProductToWhatsApp } from '../lib/whatsappShare'
+import WhatsAppIcon from './WhatsAppIcon'
 
 interface JewelleryCardProps {
   item: JewelleryItem
@@ -36,7 +38,19 @@ export default function JewelleryCard({ item, onSelect }: JewelleryCardProps) {
         {/* Subtle Dark Vignette Border */}
         <div className="absolute inset-0 border border-black/5 pointer-events-none group-hover:border-[#9C7A45]/30 transition-colors duration-500" />
 
-        
+        {/* WhatsApp Quick Enquiry Icon Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation()
+            shareProductToWhatsApp(item, imageUrl)
+          }}
+          title={`Enquire on WhatsApp about ${item.name}`}
+          aria-label={`Enquire on WhatsApp about ${item.name}`}
+          className="absolute bottom-2.5 right-2.5 z-10 w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-md shadow-black/20 hover:bg-[#20ba5a] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+        >
+          <WhatsAppIcon className="w-4 h-4 text-white" />
+        </button>
       </div>
 
       {/* Louis Vuitton Style Minimalist Left-Aligned Information */}

@@ -4,7 +4,9 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { MessageCircle, Calendar, Eye } from 'lucide-react'
 import { JewelleryItem, urlFor } from '../lib/sanity'
+import { shareProductToWhatsApp } from '../lib/whatsappShare'
 import AppointmentModal from './AppointmentModal'
+import WhatsAppIcon from './WhatsAppIcon'
 
 interface JewelleryRowProps {
   item: JewelleryItem
@@ -20,10 +22,9 @@ export default function JewelleryRow({ item, index, onSelect }: JewelleryRowProp
   const imageList = item.images && item.images.length > 0 ? item.images : ['/images/catalog-1.png']
   const activeImageUrl = urlFor(imageList[activeImageIndex])
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello Kanzar Jewels, I would like to enquire about "${item.name}" (${item.material || '22K Gold'}).`
-  )
-  const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
+  const handleWhatsAppShare = () => {
+    shareProductToWhatsApp(item, activeImageUrl)
+  }
 
   return (
     <div className="py-10 md:py-16 border-b border-[#DEDAD2] last:border-b-0">
@@ -53,6 +54,20 @@ export default function JewelleryRow({ item, index, onSelect }: JewelleryRowProp
               <Eye className="w-3.5 h-3.5 text-[#9C7A45]" />
               <span>Quick View</span>
             </div>
+
+            {/* WhatsApp Quick Enquiry Icon Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                handleWhatsAppShare()
+              }}
+              title={`Enquire on WhatsApp about ${item.name}`}
+              aria-label={`Enquire on WhatsApp about ${item.name}`}
+              className="absolute bottom-3 right-3 z-10 w-9 h-9 sm:w-9.5 sm:h-9.5 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-md shadow-black/20 hover:bg-[#20ba5a] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+            >
+              <WhatsAppIcon className="w-4.5 h-4.5 text-white" />
+            </button>
           </div>
 
           {/* Optional Image Thumbnails */}
@@ -123,15 +138,14 @@ export default function JewelleryRow({ item, index, onSelect }: JewelleryRowProp
 
           {/* Action CTAs */}
           <div className="pt-3 sm:pt-4 flex flex-wrap items-center gap-3">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-[#9C6B68] text-white border border-[#9C6B68] text-xs font-medium uppercase tracking-[0.18em] hover:bg-[#C99A94] hover:border-[#C99A94] transition-all duration-300 flex items-center justify-center gap-2 shadow-xs"
+            <button
+              type="button"
+              onClick={handleWhatsAppShare}
+              className="px-6 py-3.5 bg-[#9C6B68] text-white border border-[#9C6B68] text-xs font-medium uppercase tracking-[0.18em] hover:bg-[#C99A94] hover:border-[#C99A94] transition-all duration-300 flex items-center justify-center gap-2 shadow-xs cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 text-white" />
               <span>Instant WhatsApp Enquiry</span>
-            </a>
+            </button>
 
             <button
               type="button"

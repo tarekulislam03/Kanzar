@@ -1,12 +1,12 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
-import { X, MessageCircle, Calendar } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { JewelleryItem, urlFor } from '../lib/sanity'
-import HallmarkSeal from './HallmarkSeal'
-import AppointmentModal from './AppointmentModal'
+import { shareProductToWhatsApp } from '../lib/whatsappShare'
+import WhatsAppIcon from './WhatsAppIcon'
 
 interface JewelleryModalProps {
   item: JewelleryItem | null
@@ -15,174 +15,303 @@ interface JewelleryModalProps {
 
 export default function JewelleryModal({ item, onClose }: JewelleryModalProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(0)
-  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false)
+  const [scale, setScale] = useState(1)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   const [mounted, setMounted] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
-  const [isClosing, setIsClosing] = useState(false)
+
+  const initialDistanceRef = useRef<number | null>(null)
+  const initialScaleRef = useRef<number>(1)
+  const lastTapRef = useRef<number>(0)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Lock body scroll and trigger smooth enter animation frame
+  // Reset zoom & active image when modal opens or item changes
   useEffect(() => {
     if (item) {
       document.body.style.overflow = 'hidden'
-      const timer = requestAnimationFrame(() => setIsVisible(true))
-      return () => cancelAnimationFrame(timer)
+      setActiveImageIndex(0)
+      setScale(1)
+      setPosition({ x: 0, y: 0 })
+      requestAnimationFrame(() => setIsVisible(true))
     } else {
       document.body.style.overflow = ''
       setIsVisible(false)
-      setIsClosing(false)
     }
   }, [item])
 
-  const handleAnimatedClose = () => {
-    setIsClosing(true)
+  const handleClose = useCallback(() => {
+    setIsVisible(false)
     setTimeout(() => {
       onClose()
-      setIsClosing(false)
-      setIsVisible(false)
-    }, 600)
-  }
+      setScale(1)
+      setPosition({ x: 0, y: 0 })
+    }, 200)
+  }, [onClose])
+
+  // ESC key to close
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose()
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleClose])
 
   if (!item || !mounted) return null
 
   const imageList = item.images && item.images.length > 0 ? item.images : ['/images/catalog-1.png']
   const activeImageUrl = urlFor(imageList[activeImageIndex])
 
+  // Zoom helpers
+  const handleZoomIn = () => {
+    setScale((prev) => Math.min(prev + 0.5, 4))
+  }
+
+  const handleZoomOut = () => {
+    setScale((prev) => {
+      const next = Math.max(prev - 0.5, 1)
+      if (next === 1) setPosition({ x: 0, y: 0 })
+      return next
+    })
+  }
+
+  const handleResetZoom = () => {
+    setScale(1)
+    setPosition({ x: 0, y: 0 })
+  }
+
+  // Mouse wheel zoom
+  const handleWheel = (e: React.WheelEvent) => {
+    if (e.deltaY < 0) {
+      setScale((prev) => Math.min(prev + 0.25, 4))
+    } else {
+      setScale((prev) => {
+        const next = Math.max(prev - 0.25, 1)
+        if (next === 1) setPosition({ x: 0, y: 0 })
+        return next
+      })
+    }
+  }
+
+  // Double tap / double click to toggle 2.5x zoom
+  const handleDoubleTap = () => {
+    if (scale > 1) {
+      handleResetZoom()
+    } else {
+      setScale(2.5)
+    }
+  }
+
+  // Touch handlers for Pinch-to-Zoom & Dragging
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      // Pinch gesture start
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      )
+      initialDistanceRef.current = dist
+      initialScaleRef.current = scale
+    } else if (e.touches.length === 1) {
+      // Check for double tap
+      const now = Date.now()
+      if (now - lastTapRef.current < 300) {
+        handleDoubleTap()
+      }
+      lastTapRef.current = now
+
+      // Pan gesture start
+      if (scale > 1) {
+        setIsDragging(true)
+        setDragStart({
+          x: e.touches[0].clientX - position.x,
+          y: e.touches[0].clientY - position.y,
+        })
+      }
+    }
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2 && initialDistanceRef.current !== null) {
+      // Pinch zoom
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      )
+      const factor = dist / initialDistanceRef.current
+      const newScale = Math.min(Math.max(initialScaleRef.current * factor, 1), 4)
+      setScale(newScale)
+      if (newScale === 1) setPosition({ x: 0, y: 0 })
+    } else if (e.touches.length === 1 && isDragging && scale > 1) {
+      // Pan image
+      const newX = e.touches[0].clientX - dragStart.x
+      const newY = e.touches[0].clientY - dragStart.y
+      setPosition({ x: newX, y: newY })
+    }
+  }
+
+  const handleTouchEnd = () => {
+    initialDistanceRef.current = null
+    setIsDragging(false)
+  }
+
+  // Mouse Dragging (Desktop)
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (scale > 1) {
+      setIsDragging(true)
+      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y })
+    }
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging && scale > 1) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y,
+      })
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
   const whatsappMessage = encodeURIComponent(
-    `Hello, I am inquiring about the "${item.name}" (${item.material}) from your catalog.`
+    `Hello Kanzar Jewels, I am interested in enquiring about "${item.name}" (${item.material || '22K Gold'}).`
   )
-  const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
+  const whatsappUrl = `https://wa.me/919875338183?text=${whatsappMessage}`
 
   const modalContent = (
-    <>
-      {/* Global Fixed Overlay with highest z-index */}
-      <div
-        className={`fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/75 backdrop-blur-md transition-opacity duration-600 ease-out ${
-          isVisible && !isClosing ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        {/* Backdrop click dismiss */}
-        <div className="absolute inset-0 z-0" onClick={handleAnimatedClose} />
+    <div
+      className={`fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex flex-col justify-between transition-opacity duration-300 ${
+        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      }`}
+    >
+      {/* Top Control Bar */}
+      <div className="relative z-20 flex items-center justify-between px-4 sm:px-6 py-4 bg-gradient-to-b from-black/80 via-black/40 to-transparent">
+        {/* Title / Caption */}
+        <div className="flex flex-col">
+          <h3 className="text-white text-sm sm:text-base font-medium truncate max-w-[180px] sm:max-w-md">
+            {item.name}
+          </h3>
+          <span className="text-[#D4AF37] text-[10px] sm:text-xs font-light">
+            {item.material || '22K Gold'} • Pinch or double-tap to zoom
+          </span>
+        </div>
 
-        {/* Single Viewport Modal Container - No Scrollbar Required */}
-        <div
-          className={`relative z-10 w-full max-w-3xl max-h-[92dvh] sm:max-h-[85vh] bg-[#FAF8F3] border-t sm:border border-[#DEDAD2] rounded-t-2xl sm:rounded-none shadow-2xl overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden text-[#1C1A17] flex flex-col transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform ${
-            isVisible && !isClosing
-              ? 'opacity-100 translate-y-0 scale-100'
-              : 'opacity-0 translate-y-full sm:translate-y-24 scale-[0.97]'
-          }`}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-2.5 sm:px-5 sm:py-3.5 bg-[#FAF8F3] border-b border-[#DEDAD2] shrink-0">
-            <div className="flex items-center gap-2">
-              <HallmarkSeal size={16} />
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-[#9C7A45] font-semibold">
-                Kanzar Piece Details
-              </span>
-            </div>
-            <button
-              onClick={handleAnimatedClose}
-              className="p-1 text-[#1C1A17]/70 hover:text-[#1C1A17] hover:bg-[#EAE6DD] transition-colors cursor-pointer rounded-full"
-              aria-label="Close modal"
-            >
-              <X className="w-4 h-4 sm:w-5 sm:h-5" />
-            </button>
-          </div>
+        {/* Action Controls */}
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          {/* WhatsApp Button */}
+          <button
+            type="button"
+            onClick={() => shareProductToWhatsApp(item, activeImageUrl)}
+            className="p-2 bg-[#25D366] text-white rounded-full hover:bg-[#20ba5a] hover:scale-105 transition-all cursor-pointer shadow-md"
+            title="Enquire on WhatsApp"
+            aria-label="Enquire on WhatsApp"
+          >
+            <WhatsAppIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 p-3.5 sm:p-6 gap-3 sm:gap-6 flex-1 overflow-hidden">
-            {/* Left Image View */}
-            <div className="flex flex-col justify-center items-center">
-              <div className="relative aspect-square max-h-[32vh] sm:max-h-none w-full bg-[#F3F1ED] overflow-hidden">
-                <Image
-                  src={activeImageUrl}
-                  alt={item.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover object-center"
-                />
-              </div>
-
-              {imageList.length > 1 && (
-                <div className="flex items-center justify-center gap-1.5 mt-2 overflow-x-auto pb-0.5 w-full shrink-0">
-                  {imageList.map((img, idx) => {
-                    const src = urlFor(img)
-                    return (
-                      <button
-                        key={idx}
-                        onClick={() => setActiveImageIndex(idx)}
-                        className={`relative w-9 h-9 sm:w-12 sm:h-12 border transition-all shrink-0 cursor-pointer ${
-                          activeImageIndex === idx ? 'border-[#9C7A45] ring-1 ring-[#9C7A45]' : 'border-[#DEDAD2] opacity-60'
-                        }`}
-                      >
-                        <Image src={src} alt={`${item.name} thumb ${idx}`} fill sizes="48px" className="object-cover" />
-                      </button>
-                    )
-                  })}
-                </div>
-              )}
-            </div>
-
-            {/* Right Details */}
-            <div className="flex flex-col justify-between space-y-2 sm:space-y-4">
-              <div className="space-y-1.5 sm:space-y-3">
-                <h2 className="font-serif text-xl sm:text-2xl font-normal text-[#1C1A17] leading-snug">
-                  {item.name}
-                </h2>
-
-                <div className="text-xs sm:text-xs text-[#9C7A45] uppercase tracking-wider font-medium">
-                  Material: <span className="text-[#1C1A17]">{item.material}</span>
-                </div>
-
-                <div className="border-t border-[#DEDAD2] pt-1.5 sm:pt-3">
-                  <p className="text-xs sm:text-xs text-[#1C1A17]/80 leading-relaxed font-light line-clamp-3 sm:line-clamp-none">
-                    {item.shortDescription}
-                  </p>
-                </div>
-
-                {/* Compact Badges */}
-                <div className="flex flex-wrap items-center gap-1 pt-1">
-                  <span className="text-[8px] sm:text-[9px] uppercase tracking-wider bg-[#EAE6DD]/70 text-[#1C1A17]/80 px-2 py-0.5 border border-[#DEDAD2]/80 font-medium">
-                    BIS 916 Hallmarked
-                  </span>
-                  <span className="text-[8px] sm:text-[9px] uppercase tracking-wider bg-[#EAE6DD]/70 text-[#1C1A17]/80 px-2 py-0.5 border border-[#DEDAD2]/80 font-medium">
-                    Natural Gemstones
-                  </span>
-                  <span className="text-[8px] sm:text-[9px] uppercase tracking-wider bg-[#EAE6DD]/70 text-[#1C1A17]/80 px-2 py-0.5 border border-[#DEDAD2]/80 font-medium">
-                    Bespoke Fitting
-                  </span>
-                </div>
-              </div>
-
-              {/* Compact Action Buttons */}
-              <div className="pt-2 sm:pt-4 border-t border-[#DEDAD2] flex flex-row items-center gap-2">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-1/2 py-2.5 sm:py-3 px-2 border border-[#1C1A17] bg-transparent text-[#1C1A17] text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.1em] transition-colors flex items-center justify-center gap-1 text-center hover:border-[#9C7A45] hover:text-[#9C7A45] cursor-pointer"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 text-[#9C7A45] shrink-0" />
-                  <span className="truncate">WhatsApp</span>
-                </a>
-
-                <button
-                  onClick={() => setIsAppointmentOpen(true)}
-                  className="w-1/2 py-2.5 sm:py-3 px-2 bg-[#1C1A17] text-[#FAF8F3] hover:bg-[#9C7A45] text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.1em] transition-colors flex items-center justify-center gap-1 cursor-pointer shadow-xs"
-                >
-                  <Calendar className="w-3.5 h-3.5 text-[#9C7A45] shrink-0" />
-                  <span className="truncate">Appointment</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          {/* Close Button */}
+          <button
+            onClick={handleClose}
+            className="p-2 text-white/90 hover:text-white bg-white/20 hover:bg-white/30 rounded-full transition-all cursor-pointer"
+            title="Close"
+            aria-label="Close image viewer"
+          >
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
         </div>
       </div>
 
-      <AppointmentModal isOpen={isAppointmentOpen} onClose={() => setIsAppointmentOpen(false)} />
-    </>
+      {/* Main Image Canvas Container */}
+      <div
+        className="relative flex-1 w-full h-full flex items-center justify-center overflow-hidden touch-none select-none cursor-grab active:cursor-grabbing"
+        onWheel={handleWheel}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onDoubleClick={handleDoubleTap}
+      >
+        {/* Next / Prev Image Arrows if multiple images exist */}
+        {imageList.length > 1 && (
+          <>
+            <button
+              onClick={() => {
+                setActiveImageIndex((prev) => (prev > 0 ? prev - 1 : imageList.length - 1))
+                handleResetZoom()
+              }}
+              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 hover:bg-black/90 border border-white/20 text-white transition-all cursor-pointer"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={() => {
+                setActiveImageIndex((prev) => (prev < imageList.length - 1 ? prev + 1 : 0))
+                handleResetZoom()
+              }}
+              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-black/60 hover:bg-black/90 border border-white/20 text-white transition-all cursor-pointer"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </>
+        )}
+
+        {/* Zoomable Image Wrapper */}
+        <div
+          className="relative w-full h-full max-w-[95vw] max-h-[80vh] flex items-center justify-center transition-transform duration-100 ease-out"
+          style={{
+            transform: `translate3d(${position.x}px, ${position.y}px, 0) scale(${scale})`,
+            transformOrigin: 'center center',
+          }}
+        >
+          <Image
+            src={activeImageUrl}
+            alt={item.name}
+            fill
+            sizes="100vw"
+            priority
+            className="object-contain pointer-events-none drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
+          />
+        </div>
+      </div>
+
+      {/* Bottom Thumbnail Strip (if multiple images) */}
+      <div className="relative z-20 px-4 py-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-center gap-2">
+        {imageList.length > 1 ? (
+          imageList.map((img, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                setActiveImageIndex(idx)
+                handleResetZoom()
+              }}
+              className={`relative w-12 h-12 rounded-md overflow-hidden border-2 transition-all cursor-pointer ${
+                activeImageIndex === idx ? 'border-[#D4AF37] scale-110' : 'border-white/20 opacity-60 hover:opacity-100'
+              }`}
+            >
+              <Image src={urlFor(img)} alt={`Thumbnail ${idx}`} fill sizes="48px" className="object-cover" />
+            </button>
+          ))
+        ) : (
+          <span className="text-white/60 text-xs tracking-wider uppercase font-light">
+            Use 2 fingers to pinch-zoom or drag to inspect craftsmanship
+          </span>
+        )}
+      </div>
+    </div>
   )
 
   return createPortal(modalContent, document.body)

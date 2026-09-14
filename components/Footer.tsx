@@ -90,7 +90,7 @@ export default function Footer() {
               <div>P-4B, CIT Road, Paddapukur, Entally, Near Birshul Hat</div>
               <div>Kolkata, West Bengal – 700014</div>
               <div>Mon – Sat: 9:00 AM – 9:00 PM</div>
-              <div className="pt-2 text-[#1C1A17] font-medium">033-4535-6632 / 9875338183</div>
+              <div className="pt-2 text-[#1C1A17] font-medium">033-4535-6632 / 7003467398</div>
             </div>
           </div>
         </div>

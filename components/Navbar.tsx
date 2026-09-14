@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import AppointmentModal from './AppointmentModal'
 import HallmarkSeal from './HallmarkSeal'
+import WhatsAppIcon from './WhatsAppIcon'
 
 const NAV_LINKS = [
   { label: 'Collections', action: 'collections' },
@@ -323,10 +324,10 @@ export default function Navbar() {
               {/* Desktop Call */}
 
               <a
-                href="https://wa.me/919875338183"
+                href="https://wa.me/917003467398"
                 target="_blank"
                 rel="noopener noreferrer"
-                title="WhatsApp Us: +91 98753 38183"
+                title="WhatsApp Us: +91 70034 67398"
                 className={`
                   hidden
                   sm:flex
@@ -342,7 +343,7 @@ export default function Navbar() {
                   ${textHoverColor}
                 `}
               >
-                <MessageCircle className="w-3.5 h-3.5" />
+                <WhatsAppIcon className="w-3.5 h-3.5" />
 
                 <span>
                   WhatsApp
@@ -359,9 +360,11 @@ export default function Navbar() {
                 className={`
                   sm:hidden
                   text-[#2A2422]
+                  hover:text-[#C99A94]
+                  transition-colors
                 `}
               >
-                <MessageCircle className="w-5 h-5" />
+                <WhatsAppIcon className="w-5 h-5" />
               </a>
 
               {/* Appointment Button */}
@@ -607,14 +610,22 @@ export default function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/blog"
-                      onClick={() => setMenuOpen(false)}
-                      className="font-serif text-lg sm:text-xl text-[#2A2422] hover:text-[#9C6B68] transition-colors font-medium flex items-center justify-between group"
+                    <button
+                      onClick={() => handleNavClick('collections')}
+                      className="w-full font-serif text-lg sm:text-xl text-[#2A2422] hover:text-[#9C6B68] transition-colors font-medium flex items-center justify-between group cursor-pointer text-left"
                     >
-                      <span>Atelier Journal</span>
+                      <span>Collections</span>
                       <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleNavClick('heritage')}
+                      className="w-full font-serif text-lg sm:text-xl text-[#2A2422] hover:text-[#9C6B68] transition-colors font-medium flex items-center justify-between group cursor-pointer text-left"
+                    >
+                      <span>Story</span>
+                      <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </li>
                   <li>
                     <Link
@@ -630,7 +641,7 @@ export default function Navbar() {
                     <Link
                       href="/invitation"
                       onClick={() => setMenuOpen(false)}
-                      className="font-serif text-lg sm:text-xl text-[#9C6B68] hover:text-[#2A2422] transition-colors font-medium flex items-center justify-between group"
+                      className="font-serif text-lg sm:text-xl text-[#9C6B68] hover:text-[#2A2422] transition-colors font-medium flex items-center justify-between group font-semibold"
                     >
                       <span>Grand Opening Invitation</span>
                       <ChevronRight className="w-4 h-4 text-[#9C6B68] group-hover:translate-x-1 transition-transform" />
@@ -693,7 +704,7 @@ export default function Navbar() {
                   <div>P-4B, CIT Road, Paddapukur, Entally, Near Birshul Hat</div>
                   <div>Kolkata, West Bengal – 700014</div>
                   <div>Mon – Sat: 9:00 AM – 9:00 PM</div>
-                  <div className="pt-1 text-[#2A2422] font-medium">033-4535-6632 / 9875338183</div>
+                  <div className="pt-1 text-[#2A2422] font-medium">033-4535-6632 / 7003467398</div>
                 </div>
               </div>
 
