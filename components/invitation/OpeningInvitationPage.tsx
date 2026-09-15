@@ -392,7 +392,7 @@ export default function OpeningInvitationPage() {
                   className="group relative w-full inline-flex items-center justify-center gap-3 px-6 py-3.5 sm:py-4 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-medium text-sm sm:text-base shadow-lg shadow-[#25D366]/30 hover:shadow-xl hover:shadow-[#25D366]/40 transition-all duration-300 transform active:scale-98"
                 >
                   <WhatsAppIcon className="w-5 h-5 fill-current text-white shrink-0 group-hover:scale-110 transition-transform" />
-                  <span className="tracking-wide">RSVP on WhatsApp</span>
+                  <span className="tracking-wide">Message on Whatsapp</span>
                 </a>
               </motion.div>
 
