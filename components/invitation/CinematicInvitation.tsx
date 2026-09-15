@@ -109,28 +109,30 @@ export default function CinematicInvitation() {
   )}&dates=20260930T053000Z/20260930T163000Z`
 
   const handleShare = async () => {
+    const webUrl = typeof window !== 'undefined' ? window.location.href : 'https://kanzarjewels.com/invitation'
     const instagramUrl = 'https://www.instagram.com/kanzar_jewels?stkn=MTB1bmdxYm9hcjQwNQ%3D%3D'
-    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://kanzarjewels.com/invitation'
-    const shareData = {
-      title: 'Grand Opening Invitation — Kanzar Jewels Kolkata',
-      text: `You are cordially invited to the Grand Opening of Kanzar Jewels Kolkata on 30th September 2026. Flat 3.99% making charges inaugural offer!\n\nFollow us on Instagram: ${instagramUrl}`,
-      url: shareUrl,
-    }
+    const shareText = `You are cordially invited to the Grand Opening of Kanzar Jewels Kolkata on 30th September 2026. Flat 3.99% making charges inaugural offer!\n\n✨ Invitation Link:\n${webUrl}\n\n📸 Follow us on Instagram:\n${instagramUrl}`
 
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
-        await navigator.share(shareData)
+        await navigator.share({
+          title: 'Grand Opening Invitation — Kanzar Jewels Kolkata',
+          text: shareText,
+        })
       } catch {
-        copyLink()
+        copyText(shareText)
       }
     } else {
-      copyLink()
+      copyText(shareText)
     }
   }
 
-  const copyLink = () => {
+  const copyText = (text?: string) => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href)
+      const webUrl = window.location.href
+      const instagramUrl = 'https://www.instagram.com/kanzar_jewels?stkn=MTB1bmdxYm9hcjQwNQ%3D%3D'
+      const content = text || `You are cordially invited to the Grand Opening of Kanzar Jewels Kolkata on 30th September 2026. Flat 3.99% making charges inaugural offer!\n\n✨ Invitation Link:\n${webUrl}\n\n📸 Follow us on Instagram:\n${instagramUrl}`
+      navigator.clipboard.writeText(content)
       setCopied(true)
       setTimeout(() => setCopied(false), 2500)
     }
