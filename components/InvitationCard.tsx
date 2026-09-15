@@ -85,10 +85,12 @@ export default function InvitationCard() {
   )}&dates=20260930T053000Z/20260930T163000Z`
 
   const handleShare = async () => {
+    const instagramUrl = 'https://www.instagram.com/kanzar_jewels?stkn=MTB1bmdxYm9hcjQwNQ%3D%3D'
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://kanzarjewels.com/invitation'
     const shareData = {
       title: 'Grand Opening Invitation — Kanzar Jewels',
-      text: 'You are cordially invited to the Grand Opening of Kanzar Jewels Flagship Atelier in Kolkata.',
-      url: typeof window !== 'undefined' ? window.location.href : 'https://kanzarjewels.com/invitation',
+      text: `You are cordially invited to the Grand Opening of Kanzar Jewels Flagship Atelier in Kolkata.\n\nFollow us on Instagram: ${instagramUrl}`,
+      url: shareUrl,
     }
 
     if (typeof navigator !== 'undefined' && navigator.share) {

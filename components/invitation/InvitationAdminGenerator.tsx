@@ -24,6 +24,7 @@ export default function InvitationAdminGenerator() {
     : baseUrl
 
   const guestGreeting = name.trim() ? `Dear ${name.trim()},` : 'Dear Guest,'
+  const instagramUrl = 'https://www.instagram.com/kanzar_jewels?stkn=MTB1bmdxYm9hcjQwNQ%3D%3D'
   const whatsappText = `${guestGreeting}
 
 Something beautiful is coming to Kolkata.
@@ -32,6 +33,9 @@ Kanzar Jewels cordially invites you to the Grand Opening of our Flagship Atelier
 
 Open your personalized royal invitation here:
 ${generatedUrl}
+
+Follow us on Instagram:
+${instagramUrl}
 
 We look forward to welcoming you! ✨`
 

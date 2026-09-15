@@ -109,10 +109,12 @@ export default function CinematicInvitation() {
   )}&dates=20260930T053000Z/20260930T163000Z`
 
   const handleShare = async () => {
+    const instagramUrl = 'https://www.instagram.com/kanzar_jewels?stkn=MTB1bmdxYm9hcjQwNQ%3D%3D'
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://kanzarjewels.com/invitation'
     const shareData = {
       title: 'Grand Opening Invitation — Kanzar Jewels Kolkata',
-      text: "You are cordially invited to the Grand Opening of Kanzar Jewels Kolkata on 30th September 2026. Flat 3.99% making charges inaugural offer!",
-      url: typeof window !== 'undefined' ? window.location.href : 'https://kanzarjewels.com/invitation'
+      text: `You are cordially invited to the Grand Opening of Kanzar Jewels Kolkata on 30th September 2026. Flat 3.99% making charges inaugural offer!\n\nFollow us on Instagram: ${instagramUrl}`,
+      url: shareUrl,
     }
 
     if (typeof navigator !== 'undefined' && navigator.share) {
@@ -330,7 +332,7 @@ export default function CinematicInvitation() {
             className="flex items-center justify-center gap-2 py-3 sm:py-3.5 md:py-4 lg:py-5 px-3 sm:px-4 rounded-xl bg-gradient-to-r from-[#D4AF37] via-[#F3C562] to-[#D4AF37] hover:brightness-110 active:scale-95 text-[#2B0508] text-xs sm:text-sm md:text-base lg:text-lg font-bold uppercase tracking-wider shadow-[0_6px_22px_rgba(212,175,55,0.5)] transition-all cursor-pointer"
           >
             <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 fill-[#2B0508] shrink-0" />
-            <span>RSVP</span>
+            <span>Message</span>
           </a>
 
           {/* 2. Get Directions */}
