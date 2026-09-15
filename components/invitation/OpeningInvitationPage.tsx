@@ -340,15 +340,16 @@ export default function OpeningInvitationPage() {
                 transition={{ delay: 0.38, duration: 0.6 }}
                 className="flex flex-col items-center space-y-1"
               >
+<h2 className="font-serif text-xs sm:text-sm md:text-base text-[#5C363F] tracking-[0.18em] uppercase font-medium pt-1">
+                  to Kanzar Jewels
+                </h2>
                 <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#8B4A56]/75 font-semibold">
-                  at
+                  on
                 </span>
                 <p className="font-cinzel text-2xl sm:text-3xl md:text-4xl font-bold text-[#8B4A56] tracking-[0.06em] leading-tight drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
                   30th September
                 </p>
-                <h2 className="font-serif text-xs sm:text-sm md:text-base text-[#5C363F] tracking-[0.18em] uppercase font-medium pt-1">
-                  to Kanzar Jewels
-                </h2>
+                
               </motion.div>
 
               {/* 3. "location - {location}" (Handmade paper inset) */}
