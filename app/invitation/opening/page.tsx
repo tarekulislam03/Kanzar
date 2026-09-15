@@ -22,8 +22,8 @@ export default function InvitationOpeningRoute() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-[100dvh] w-full bg-gradient-to-br from-[#FAF2F3] via-[#F4E3E5] to-[#E9D0D5] flex items-center justify-center">
-          <div className="w-8 h-8 rounded-full border-2 border-[#C48793] border-t-transparent animate-spin" />
+        <div className="min-h-[100dvh] w-full bg-gradient-to-br from-[#9E5D6C] via-[#803E4C] to-[#5C2633] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full border-2 border-[#F3D5DB] border-t-transparent animate-spin" />
         </div>
       }
     >

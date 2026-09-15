@@ -4,13 +4,14 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, MapPin } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import WhatsAppIcon from '@/components/WhatsAppIcon'
 
 export default function OpeningInvitationPage() {
   const [animationState, setAnimationState] = useState<'sealed' | 'opening' | 'opened'>('sealed')
   const searchParams = useSearchParams()
 
+  const guestName = searchParams?.get('name')?.trim() || searchParams?.get('to')?.trim() || ''
   const rawLocation = searchParams?.get('location')
   const location = rawLocation || 'P-4B, CIT Road, Entally, Kolkata – 700014'
 
@@ -39,39 +40,44 @@ export default function OpeningInvitationPage() {
   }
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Kanzar Jewels, I am delighted to accept your invitation for the Grand Opening on 30th September! RSVP.`
+    guestName
+      ? `Hello Kanzar Jewels, I am ${guestName} and I am delighted to accept your invitation for the Grand Opening on 30th September! RSVP.`
+      : `Hello Kanzar Jewels, I am delighted to accept your invitation for the Grand Opening on 30th September! RSVP.`
   )
   const whatsappUrl = `https://wa.me/917003467398?text=${whatsappMessage}`
 
   return (
-    <div className="relative min-h-[100dvh] w-full overflow-hidden bg-gradient-to-br from-[#FAF2F3] via-[#F4E3E5] to-[#E9D0D5] text-[#2B1F22] flex flex-col justify-between items-center select-none font-sans px-4 py-6 sm:py-8">
+    <div className="relative min-h-[100dvh] w-full overflow-hidden bg-gradient-to-br from-[#9E5D6C] via-[#803E4C] to-[#5C2633] text-[#2B1F22] flex flex-col justify-between items-center select-none font-sans px-4 py-6 sm:py-8">
       {/* Background Soft Glows & Ambient Luxury Floating Particles */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Central soft white radial bloom */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.85)_0%,rgba(244,227,229,0.45)_50%,transparent_75%)] blur-2xl" />
+        {/* Central warm rose glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[850px] h-[600px] sm:h-[850px] rounded-full bg-[radial-gradient(circle,rgba(214,142,156,0.28)_0%,rgba(128,62,76,0.35)_50%,transparent_75%)] blur-2xl" />
+        
+        {/* Soft edge vignette to deepen the background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(55,18,25,0.45)_100%)]" />
 
         {/* Ambient floating subtle dusky pink / pearl dust */}
-        {[...Array(12)].map((_, i) => (
+        {[...Array(14)].map((_, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 30 }}
             animate={{
-              opacity: [0.15, 0.7, 0.15],
+              opacity: [0.2, 0.85, 0.2],
               y: [-10, -70, -10],
-              x: [0, (i % 2 === 0 ? 15 : -15), 0],
+              x: [0, (i % 2 === 0 ? 18 : -18), 0],
             }}
             transition={{
               duration: 4 + (i % 4) * 1.5,
               repeat: Infinity,
               ease: 'easeInOut',
-              delay: i * 0.4,
+              delay: i * 0.35,
             }}
-            className="absolute rounded-full bg-white/60 shadow-xs"
+            className="absolute rounded-full bg-white/70 shadow-xs"
             style={{
-              width: `${(i % 3) * 3 + 3}px`,
-              height: `${(i % 3) * 3 + 3}px`,
-              top: `${15 + (i * 7) % 75}%`,
-              left: `${8 + (i * 8) % 84}%`,
+              width: `${(i % 3) * 3 + 2.5}px`,
+              height: `${(i % 3) * 3 + 2.5}px`,
+              top: `${12 + (i * 7) % 78}%`,
+              left: `${6 + (i * 8) % 88}%`,
             }}
           />
         ))}
@@ -83,7 +89,7 @@ export default function OpeningInvitationPage() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative"
+          className="relative filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)]"
         >
           <Image
             src="/logo-v3.png"
@@ -91,7 +97,7 @@ export default function OpeningInvitationPage() {
             width={200}
             height={80}
             priority
-            className="h-12 sm:h-16 md:h-18 w-auto object-contain drop-shadow-[0_2px_8px_rgba(139,74,86,0.15)]"
+            className="h-12 sm:h-16 md:h-18 w-auto object-contain brightness-105"
           />
         </motion.div>
       </header>
@@ -114,37 +120,20 @@ export default function OpeningInvitationPage() {
                 transition: { duration: 0.35, ease: 'easeInOut' },
               }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-sm sm:max-w-md flex flex-col items-center [perspective:1200px]"
+              className="relative w-full max-w-sm sm:max-w-md flex flex-col items-center [perspective:1000px]"
             >
               {/* Envelope Wrapper */}
-              <div className="relative w-full aspect-[4/3] rounded-2xl bg-gradient-to-b from-[#FDF8F9] via-[#FAF0F2] to-[#EED8DC] p-0 shadow-[0_25px_50px_-12px_rgba(139,74,86,0.25)] border border-[#E8CCD1] overflow-visible">
+              <div className="relative w-full aspect-[16/11] rounded-2xl bg-gradient-to-b from-[#FDF8F9] via-[#FAF0F2] to-[#EED8DC] shadow-[0_25px_50px_-12px_rgba(139,74,86,0.35)] border border-[#E8CCD1] overflow-visible">
                 {/* Envelope Interior Backing Lining */}
-                <div className="absolute inset-0 rounded-2xl bg-[#F6E6E9] overflow-hidden">
-                  <div className="absolute inset-2 rounded-xl border border-[#E2CAD0]/50" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#ECD5DA] to-[#FAF1F3] overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#C48793_1px,transparent_1px)] [background-size:16px_16px] opacity-15" />
                 </div>
 
-                {/* Clean Letter Sheet inside pocket (no text, avoids cut-off by lid) */}
-                <motion.div
-                  animate={
-                    animationState === 'opening'
-                      ? { y: -70, scale: 1.02, opacity: 0.7 }
-                      : { y: 0, scale: 0.96, opacity: 1 }
-                  }
-                  transition={{
-                    duration: 0.5,
-                    ease: [0.16, 1, 0.3, 1],
-                    delay: animationState === 'opening' ? 0.15 : 0,
-                  }}
-                  className="absolute inset-x-4 top-3 bottom-3 rounded-xl bg-white shadow-xs border border-[#EED7DB] z-10 flex flex-col items-center justify-center p-3 overflow-hidden"
-                >
-                  <div className="w-full h-full rounded-lg border border-[#F0DCE0] bg-[#FAF6F7]/50" />
-                </motion.div>
 
-                {/* Front Envelope Pocket (Left & Right & Bottom Flaps) */}
+                {/* Front Envelope Pocket (Left, Right & Bottom Flaps) */}
                 <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-2xl">
                   <svg
-                    viewBox="0 0 360 270"
+                    viewBox="0 0 100 70"
                     preserveAspectRatio="none"
                     className="w-full h-full"
                   >
@@ -158,108 +147,86 @@ export default function OpeningInvitationPage() {
                         <stop offset="100%" stopColor="#F5DFE3" />
                       </linearGradient>
                       <linearGradient id="foldBottom" x1="0" y1="1" x2="0" y2="0">
-                        <stop offset="0%" stopColor="#E8CCD1" />
+                        <stop offset="0%" stopColor="#E5C7CC" />
                         <stop offset="100%" stopColor="#FAF2F4" />
                       </linearGradient>
                     </defs>
                     {/* Left Triangle */}
-                    <path d="M 0 0 L 170 135 L 0 270 Z" fill="url(#foldLeft)" opacity="0.95" />
+                    <path d="M 0 0 L 50 35 L 0 70 Z" fill="url(#foldLeft)" opacity="0.98" />
                     {/* Right Triangle */}
-                    <path d="M 360 0 L 190 135 L 360 270 Z" fill="url(#foldRight)" opacity="0.95" />
+                    <path d="M 100 0 L 50 35 L 100 70 Z" fill="url(#foldRight)" opacity="0.98" />
                     {/* Bottom Triangle */}
                     <path
-                      d="M 0 270 L 180 130 L 360 270 Z"
+                      d="M 0 70 L 50 30 L 100 70 Z"
                       fill="url(#foldBottom)"
                       stroke="#E5C7CC"
-                      strokeWidth="1"
+                      strokeWidth="0.5"
                     />
                   </svg>
                 </div>
 
-                {/* 3D TOP FLAP: ROTATES OPEN UPWARD (180deg) */}
+                {/* TOP FLAP / LID (Folds Upward Smoothly in 3D) */}
                 <motion.div
-                  style={{ transformOrigin: 'top center', transformStyle: 'preserve-3d' }}
+                  style={{ transformOrigin: 'top center' }}
                   animate={
                     animationState === 'opening'
                       ? { rotateX: 180 }
                       : { rotateX: 0 }
                   }
                   transition={{
-                    duration: 0.6,
+                    duration: 0.55,
                     ease: [0.4, 0, 0.2, 1],
                   }}
-                  className="absolute top-0 left-0 right-0 h-[145px] sm:h-[160px] z-30"
+                  className="absolute top-0 left-0 right-0 h-[52%] z-30 pointer-events-none drop-shadow-[0_6px_12px_rgba(139,74,86,0.22)]"
                 >
-                  {/* Flap Front (facing downward when closed) */}
-                  <div
-                    style={{ backfaceVisibility: 'hidden' }}
-                    className="absolute inset-0 w-full h-full"
+                  <svg
+                    viewBox="0 0 100 36"
+                    preserveAspectRatio="none"
+                    className="w-full h-full"
                   >
-                    <svg
-                      viewBox="0 0 360 145"
-                      preserveAspectRatio="none"
-                      className="w-full h-full filter drop-shadow-[0_6px_12px_rgba(139,74,86,0.22)]"
-                    >
-                      <defs>
-                        <linearGradient id="flapFrontGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#FFFFFF" />
-                          <stop offset="65%" stopColor="#FAF1F3" />
-                          <stop offset="100%" stopColor="#EED5D9" />
-                        </linearGradient>
-                      </defs>
-                      <path
-                        d="M 0 0 L 180 140 L 360 0 Z"
-                        fill="url(#flapFrontGrad)"
-                        stroke="#E8CCD1"
-                        strokeWidth="1.5"
-                      />
-                      {/* Decorative stitch accent */}
-                      <path
-                        d="M 12 0 L 180 130 L 348 0"
-                        fill="none"
-                        stroke="#C48793"
-                        strokeWidth="1"
-                        strokeDasharray="4 4"
-                        opacity="0.55"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Flap Back (revealed pointing upward when opened) */}
-                  <div
-                    style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)' }}
-                    className="absolute inset-0 w-full h-full"
-                  >
-                    <svg
-                      viewBox="0 0 360 145"
-                      preserveAspectRatio="none"
-                      className="w-full h-full"
-                    >
-                      <defs>
-                        <linearGradient id="flapBackGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#E2CAD0" />
-                          <stop offset="100%" stopColor="#FAF3F4" />
-                        </linearGradient>
-                      </defs>
-                      <path
-                        d="M 0 0 L 180 140 L 360 0 Z"
-                        fill="url(#flapBackGrad)"
-                        stroke="#E8CCD1"
-                        strokeWidth="1.5"
-                      />
-                    </svg>
-                  </div>
+                    <defs>
+                      <linearGradient id="flapGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#FFFFFF" />
+                        <stop offset="60%" stopColor="#FAF1F3" />
+                        <stop offset="100%" stopColor="#EAD2D7" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d="M 0 0 L 50 36 L 100 0 Z"
+                      fill="url(#flapGrad)"
+                      stroke="#E5C7CC"
+                      strokeWidth="0.5"
+                    />
+                    {/* Subtle dashed stitch border on flap */}
+                    <path
+                      d="M 4 0 L 50 33 L 96 0"
+                      fill="none"
+                      stroke="#C48793"
+                      strokeWidth="0.4"
+                      strokeDasharray="1.5 1.5"
+                      opacity="0.6"
+                    />
+                  </svg>
                 </motion.div>
 
-                {/* CENTER OPEN BUTTON (Mounted at flap intersection) */}
+                {/* Guest Name Plaque on Envelope (if personalized) */}
+                {guestName && (
+                  <div className="absolute top-2.5 inset-x-0 z-25 text-center pointer-events-none px-4">
+                    <span className="inline-block px-3 py-1 rounded-full bg-white/85 backdrop-blur-xs text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#8B4A56] font-bold border border-[#E8CCD1] shadow-xs truncate max-w-[85%]">
+                      Exclusively For {guestName}
+                    </span>
+                  </div>
+                )}
+
+                {/* CENTER OPEN BUTTON (Aligned at flap tip) */}
                 <AnimatePresence>
                   {animationState === 'sealed' && (
                     <motion.div
                       key="open-button"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-                      className="absolute left-1/2 top-[52%] -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col items-center"
+                      exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.18 } }}
+                      className="absolute left-1/2 top-[51%] -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col items-center"
                     >
                       {/* Outer pulsating glow ring */}
                       <motion.div
@@ -283,7 +250,7 @@ export default function OpeningInvitationPage() {
                           boxShadow: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
                         }}
                         aria-label="Open Letter"
-                        className="group relative px-8 py-3.5 sm:px-10 sm:py-4 rounded-full bg-gradient-to-r from-[#C48793] via-[#9C5B67] to-[#8B4A56] text-white font-medium tracking-[0.2em] uppercase text-sm sm:text-base flex items-center gap-2.5 cursor-pointer shadow-xl overflow-hidden transition-all duration-300"
+                        className="group relative px-9 py-3.5 sm:px-11 sm:py-4 rounded-full bg-gradient-to-r from-[#C48793] via-[#9C5B67] to-[#8B4A56] text-white font-medium tracking-[0.2em] uppercase text-sm sm:text-base flex items-center justify-center cursor-pointer shadow-xl overflow-hidden transition-all duration-300"
                       >
                         {/* Shimmer light sweep */}
                         <motion.div
@@ -292,7 +259,6 @@ export default function OpeningInvitationPage() {
                           className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/35 to-transparent transform -skew-x-12 pointer-events-none"
                         />
 
-                        <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white/90 group-hover:rotate-45 transition-transform duration-500" />
                         <span>Open</span>
                       </motion.button>
 
@@ -332,12 +298,29 @@ export default function OpeningInvitationPage() {
               <div className="absolute bottom-5 left-5 w-4 h-4 border-b-2 border-l-2 border-[#C48793] rounded-bl pointer-events-none" />
               <div className="absolute bottom-5 right-5 w-4 h-4 border-b-2 border-r-2 border-[#C48793] rounded-br pointer-events-none" />
 
-              {/* 1. "You are invited" (Tip icon removed) */}
+              {/* Personalized Guest Greeting (if provided) */}
+              {guestName && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.5 }}
+                  className="mb-1"
+                >
+                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#8B4A56]/70 font-semibold block">
+                    Specially Invited
+                  </span>
+                  <p className="font-serif text-lg sm:text-xl text-[#8B4A56] font-medium tracking-wide">
+                    Dear {guestName},
+                  </p>
+                </motion.div>
+              )}
+
+              {/* 1. "You are invited" */}
               <motion.h1
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="font-script text-4xl sm:text-5xl md:text-6xl text-[#8B4A56] font-normal leading-tight tracking-wide pt-1 sm:pt-2 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]"
+                className="font-script text-4xl sm:text-5xl md:text-6xl text-[#8B4A56] font-normal leading-tight tracking-wide pt-0.5 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]"
               >
                 You are invited
               </motion.h1>
@@ -427,7 +410,7 @@ export default function OpeningInvitationPage() {
 
       {/* Subtle footer spacing to keep layout centered */}
       <footer className="relative z-10 text-center py-2">
-        <p className="text-[10px] uppercase tracking-[0.25em] text-[#8B4A56]/60 font-medium">
+        <p className="text-[10px] uppercase tracking-[0.25em] text-[#F3D5DB]/85 font-medium">
           Kanzar Jewels • Kolkata
         </p>
       </footer>
