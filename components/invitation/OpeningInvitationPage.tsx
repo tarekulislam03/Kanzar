@@ -315,6 +315,22 @@ export default function OpeningInvitationPage() {
                 </motion.div>
               )}
 
+              {/* Grand Opening (Bigger & Highlighted) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.18, duration: 0.6 }}
+                className="relative my-2 sm:my-3 flex items-center justify-center"
+              >
+                <div className="flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#F4DFE3]/90 via-[#FDF2F4] to-[#F4DFE3]/90 border border-[#DCA8B2] shadow-[0_4px_14px_rgba(139,74,86,0.14),inset_0_1px_0_rgba(255,255,255,0.9)]">
+                  <span className="text-[#C48793] text-xs sm:text-sm">✦</span>
+                  <span className="font-cinzel text-lg sm:text-2xl md:text-3xl font-extrabold tracking-[0.22em] text-[#8B4A56] uppercase drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+                    Grand Opening
+                  </span>
+                  <span className="text-[#C48793] text-xs sm:text-sm">✦</span>
+                </div>
+              </motion.div>
+
               {/* 1. "You are invited" */}
               <motion.h1
                 initial={{ opacity: 0, y: 15 }}
